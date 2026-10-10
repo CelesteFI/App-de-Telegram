@@ -1,0 +1,150 @@
+{
+  "code": "7639",
+  "titulo": "Quiz de Metodo de Newton-Raphson",
+  "n_preguntas": 5,
+  "n_alumnos": 1,
+  "creado_at": 1790014698.6470265,
+  "inicio_at": 1790014768.7830899,
+  "fin_at": 1790014897.0754461,
+  "filas": [
+    {
+      "uid": "1190567302",
+      "nombre": "Dayra Celeste Peña Hernández",
+      "aciertos": 2,
+      "total": 5,
+      "pct": 40.0,
+      "detalle": [
+        {
+          "q": 0,
+          "opcion": null,
+          "ok": null
+        },
+        {
+          "q": 1,
+          "opcion": 1,
+          "ok": false,
+          "t": 24.4
+        },
+        {
+          "q": 2,
+          "opcion": 0,
+          "ok": true,
+          "t": 35.6
+        },
+        {
+          "q": 3,
+          "opcion": 0,
+          "ok": true,
+          "t": 75.2
+        },
+        {
+          "q": 4,
+          "opcion": null,
+          "ok": null
+        }
+      ]
+    }
+  ],
+  "por_pregunta": [
+    {
+      "q": 0,
+      "p": "Pregunta 1",
+      "f": "",
+      "opciones": [
+        "Correcta",
+        "Incorrecta",
+        "Incorrecta",
+        "Incorrecta"
+      ],
+      "correcta": 0,
+      "cuenta": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "respondidas": 0,
+      "aciertos": 0
+    },
+    {
+      "q": 1,
+      "p": "Pregunta 2",
+      "f": "",
+      "opciones": [
+        "Correcta",
+        "Incorrecta",
+        "Incorrecta",
+        "Incorrecta"
+      ],
+      "correcta": 0,
+      "cuenta": {
+        "0": 0,
+        "1": 1,
+        "2": 0,
+        "3": 0
+      },
+      "respondidas": 1,
+      "aciertos": 0
+    },
+    {
+      "q": 2,
+      "p": "Pregunta 3",
+      "f": "",
+      "opciones": [
+        "Correcta",
+        "Incorrecta",
+        "Incorrecta",
+        "Incorrecta"
+      ],
+      "correcta": 0,
+      "cuenta": {
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "respondidas": 1,
+      "aciertos": 1
+    },
+    {
+      "q": 3,
+      "p": "Pregunta 4",
+      "f": "",
+      "opciones": [
+        "Correcta",
+        "Incorrecta",
+        "Incorrecta",
+        "Incorrecta"
+      ],
+      "correcta": 0,
+      "cuenta": {
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "respondidas": 1,
+      "aciertos": 1
+    },
+    {
+      "q": 4,
+      "p": "Pregunta 5",
+      "f": "",
+      "opciones": [
+        "Correcta",
+        "Incorrecta",
+        "Incorrecta",
+        "Incorrecta"
+      ],
+      "correcta": 0,
+      "cuenta": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "respondidas": 0,
+      "aciertos": 0
+    }
+  ]
+}

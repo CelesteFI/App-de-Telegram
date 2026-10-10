@@ -1,0 +1,48 @@
+/* ordenar.css — Ordena la secuencia: linea de tiempo con pasos. */
+
+.ordenar { position: relative; padding-left: 26px; }
+.ordenar::before {
+  content: "";
+  position: absolute;
+  left: 9px; top: 8px; bottom: 8px;
+  width: 5px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #22c55e, #eab308, #ea580c, #db2777, #7c3aed);
+}
+.ordenar__fila {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: #fff;
+  border: 2px solid #fed7aa;
+  border-radius: 14px;
+  padding: 10px;
+  margin-bottom: 8px;
+  color: #1e293b;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, .12);
+  animation: tarjeta-entra .25s ease;
+  position: relative;
+}
+.ordenar__fila::before {
+  content: "";
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  translate: 0 -50%;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--acento);
+}
+.ordenar__pos {
+  flex: none;
+  width: 30px; height: 30px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ea580c, #db2777);
+  color: #fff;
+  font-weight: 900;
+}
+.ordenar__texto { flex: 1; min-width: 0; font-size: 14px; overflow-x: auto; color: #1e293b; }
+.ordenar__botones { display: flex; flex-direction: column; gap: 4px; }
+.ordenar__botones .boton { min-height: 34px; padding: 4px 10px; }

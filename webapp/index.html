@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Repaso de Ecuaciones Diferenciales</title>
+<!-- Guardamos cualquier error de carga ANTES de que corran los demas scripts,
+     para que el respaldo de abajo pueda decir QUE fallo (no solo que fallo). -->
+<script>
+  window.__repasoErrores = [];
+  window.addEventListener('error', function (e) {
+    var t = e.target;
+    if (t && t.tagName === 'SCRIPT' && t.src) {
+      window.__repasoErrores.push('No cargo el script: ' + t.src);
+    } else {
+      window.__repasoErrores.push('Error: ' + (e.message || 'desconocido'));
+    }
+  }, true);
+  window.addEventListener('unhandledrejection', function (e) {
+    var r = e.reason;
+    window.__repasoErrores.push('Promesa rechazada: ' + (r && r.message ? r.message : r));
+  });
+</script>
+<!-- Todo se sirve desde este mismo servidor (carpeta vendor/): sin CDN.
+     Asi la app carga igual en el navegador, en la red del salon y dentro
+     del WebView de Telegram, y no depende de que internet alcance a terceros. -->
+<link rel="stylesheet" href="vendor/katex/katex.min.css?v=2.2.0">
+<link rel="stylesheet" href="css/base.css?v=2.2.0">
+<link rel="stylesheet" href="css/juegos/quiz.css?v=2.2.0">
+<link rel="stylesheet" href="css/juegos/deslizador.css?v=2.2.0">
+<link rel="stylesheet" href="css/juegos/memoria.css?v=2.2.0">
+<link rel="stylesheet" href="css/juegos/columnas.css?v=2.2.0">
+<link rel="stylesheet" href="css/juegos/completar.css?v=2.2.0">
+<link rel="stylesheet" href="css/juegos/intruso.css?v=2.2.0">
+<link rel="stylesheet" href="css/juegos/clasificador.css?v=2.2.0">
+<link rel="stylesheet" href="css/juegos/ordenar.css?v=2.2.0">
+<link rel="stylesheet" href="css/juegos/grafico.css?v=2.2.0">
+<link rel="stylesheet" href="css/juegos/palabra.css?v=2.2.0">
+<link rel="stylesheet" href="css/juegos/globos.css?v=2.2.0">
+<!-- El script de Telegram se carga primero (sincrono) para que initData
+     este listo antes que cualquier modulo. Es local, asi que no bloquea. -->
+<script src="vendor/telegram-web-app.js?v=2.2.0"></script>
+<!-- KaTeX en local con defer: no frena el primer pintado; el modulo de
+     ecuaciones reintenta solo si aun no esta listo. -->
+<script defer src="vendor/katex/katex.min.js?v=2.2.0"></script>
+<script defer src="vendor/katex/contrib/auto-render.min.js?v=2.2.0"></script>
+</head>
+<body>
+<header class="barra" id="barra">
+  <button class="barra__volver" id="volver" type="button" hidden aria-label="Volver">‹</button>
+  <div class="barra__titulo">
+    <h1 id="titulo">Repaso de Ecuaciones Diferenciales</h1>
+    <p class="barra__sub" id="subtitulo"></p>
+  </div>
+  <div class="barra__datos" id="marcador" hidden></div>
+</header>
+
+<main id="app" class="app">
+  <div class="cargando" id="arranque">
+    <div class="cargando__punto"></div>
+    <p>Cargando la app…</p>
+  </div>
+</main>
+
+<footer class="pie" id="pie" hidden>
+  <span id="pieTexto"></span>
+</footer>
+
+<div class="avisos" id="avisos" aria-live="polite"></div>
+
+<script type="module" src="js/app.js?v=2.2.0"></script>
+<script>
+  // Respaldo: si el modulo no llego a ejecutarse (archivo que no carga, red
+  // cortada a medias, error de sintaxis), no dejamos la pantalla "Cargando"
+  // para siempre. Mostramos el motivo capturado y un boton para reintentar.
+  setTimeout(function () {
+    if (window.__repasoArranco) return;
+    var app = document.getElementById('app');
+    if (!app) return;
+    if (app.querySelector('.vacio') || app.querySelector('.hub') || app.querySelector('.tarjeta')) return;
+    app.innerHTML = '';
+    var caja = document.createElement('div');
+    caja.className = 'vacio';
+    var p = document.createElement('p');
+    p.textContent = 'No se pudo cargar la aplicacion.';
+    var nota = document.createElement('p');
+    nota.className = 'vacio__nota';
+    nota.textContent = 'Revisa tu conexion y toca Reintentar.';
+    caja.append(p, nota);
+    var errores = window.__repasoErrores || [];
+    if (errores.length) {
+      var detalle = document.createElement('pre');
+      detalle.className = 'vacio__detalle';
+      detalle.textContent = errores.slice(0, 8).join('\n');
+      caja.append(detalle);
+    }
+    var boton = document.createElement('button');
+    boton.type = 'button';
+    boton.className = 'boton boton--ancho';
+    boton.textContent = 'Reintentar';
+    boton.addEventListener('click', function () { location.reload(); });
+    caja.append(boton);
+    app.append(caja);
+  }, 12000);
+</script>
+</body>
+</html>

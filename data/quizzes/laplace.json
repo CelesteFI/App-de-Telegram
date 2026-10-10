@@ -1,0 +1,104 @@
+{
+  "id": "quiz_laplace",
+  "tema": "laplace",
+  "titulo": "Quiz de transformada de Laplace",
+  "descripcion": "Propiedades, condiciones iniciales y ecuaciones diferenciales transformadas.",
+  "preguntas": [
+    {
+      "id": "la01",
+      "p": "¿Cual es la transformada de Laplace de la constante 1?",
+      "f": "",
+      "opciones": ["$\\mathcal{L}\\{1\\} = \\dfrac{1}{s}$", "$\\mathcal{L}\\{1\\} = \\dfrac{1}{s^{2}}$", "$\\mathcal{L}\\{1\\} = s$", "$\\mathcal{L}\\{1\\} = e^{s}$"],
+      "correcta": 0,
+      "explicacion": "$1 = e^{0t}$, asi que $\\mathcal{L}\\{e^{at}\\} = \\frac{1}{s-a}$ con $a = 0$ da $\\frac{1}{s}$."
+    },
+    {
+      "id": "la02",
+      "p": "La propiedad $\\mathcal{L}\\{y'\\} = sY(s) - y(0)$ significa que...",
+      "f": "",
+      "opciones": ["Hay que conocer $y(0)$ para transformar", "Hay que conocer $y(0)$ y basta", "No hace falta la condicion inicial", "$Y(s)$ ya incluye $y(0)$"],
+      "correcta": 0,
+      "explicacion": "Por eso la transformada de Laplace solo es comoda en ED con condiciones iniciales en $t = 0$: si no las conoces, quedan incognitas mezcladas en la ecuacion algebraica."
+    },
+    {
+      "id": "la03",
+      "p": "Segun la pregunta diagnostico, la expresion $\\mathcal{L}^{-1}\\!\\left(\\dfrac{4s}{(s^{2}+16)^{2}}\\right)$ equivale por convolucion a...",
+      "f": "",
+      "opciones": ["$\\cos(16t) * \\sin(4t)$", "$\\cos(4t) * \\sin(16t)$", "$\\cos(4t) * \\sin(4t)$", "$\\cos(16t) * \\sin(16t)$"],
+      "correcta": 2,
+      "explicacion": "Por el teorema de convolucion, $\\mathcal{L}^{-1}\\{F(s)G(s)\\} = f*g$. Se separa $\\dfrac{4s}{(s^{2}+16)^{2}} = \\dfrac{s}{s^{2}+16}\\,\\dfrac{4}{s^{2}+16}$, y como $\\mathcal{L}\\{\\cos 4t\\} = \\frac{s}{s^{2}+16}$ y $\\mathcal{L}\\{\\sin 4t\\} = \\frac{4}{s^{2}+16}$, resulta $\\cos(4t) * \\sin(4t)$. Ojo: el 4 del numerador es justamente el que aporta el seno, no el coseno."
+    },
+    {
+      "id": "la04",
+      "p": "¿Cual es $\\mathcal{L}\\{y''\\}$?",
+      "f": "",
+      "opciones": ["$s^{2}Y(s) - y(0)$", "$s^{2}Y(s) - s\\,y(0) - y'(0)$", "$s\\,Y(s) - y'(0)$", "$s^{2}Y(s) - y''(0)$"],
+      "correcta": 1,
+      "explicacion": "Cada derivacion resta la siguiente condicion inicial: $y(0)$ entra multiplicada por $s$ y $y'(0)$ sin multiplicar. El mismo patron se repite con $y'''$."
+    },
+    {
+      "id": "la05",
+      "p": "La transformada de Laplace es especialmente util para...",
+      "f": "",
+      "opciones": ["ED lineales con condiciones iniciales en $t = 0$", "ED no lineales de cualquier tipo", "ED exactas", "Sistemas de ED de primer orden"],
+      "correcta": 0,
+      "explicacion": "Convierte el problema con dato inicial en una ecuacion ALGEBRAICA en $Y(s)$, que se despeja y luego se deshace con la transformada inversa. En no lineales la transformada no ayuda."
+    },
+    {
+      "id": "la06",
+      "p": "La transformada de Laplace de $e^{at}$ es...",
+      "f": "",
+      "opciones": ["$\\dfrac{1}{s-a}$", "$\\dfrac{1}{s+a}$", "$\\dfrac{a}{s^{2}+a^{2}}$", "$\\dfrac{s}{s^{2}+a^{2}}$"],
+      "correcta": 0,
+      "explicacion": "Es la formula base: $\\mathcal{L}\\{e^{at}f(t)\\} = F(s-a)$ generaliza a $f = 1$."
+    },
+    {
+      "id": "la07",
+      "p": "$\\mathcal{L}\\{\\sin at\\}$ y $\\mathcal{L}\\{\\cos at\\}$ son respectivamente...",
+      "f": "",
+      "opciones": ["$\\dfrac{a}{s^{2}+a^{2}}$ y $\\dfrac{s}{s^{2}+a^{2}}$", "$\\dfrac{s}{s^{2}+a^{2}}$ y $\\dfrac{a}{s^{2}+a^{2}}$", "$\\dfrac{1}{s^{2}+a^{2}}$ y $\\dfrac{a}{s^{2}+a^{2}}$", "$\\dfrac{a}{s-a^{2}}$ y $\\dfrac{s}{s+a^{2}}$"],
+      "correcta": 0,
+      "explicacion": "La funcion seno aporta el numerador $a$ y el coseno el $s$. Con $a = 1$: $\\mathcal{L}\\{\\sin t\\} = \\frac{1}{s^{2}+1}$ y $\\mathcal{L}\\{\\cos t\\} = \\frac{s}{s^{2}+1}$, que son las transformadas que aparecen una y otra vez."
+    },
+    {
+      "id": "la08",
+      "p": "$\\mathcal{L}\\{t\\}$ es...",
+      "f": "",
+      "opciones": ["$\\dfrac{1}{s^{2}}$", "$\\dfrac{1}{s}$", "$\\dfrac{1}{s-1}$", "$-\\dfrac{1}{s^{2}}$"],
+      "correcta": 0,
+      "explicacion": "Sale de $\\mathcal{L}\\{t^{n}\\} = \\frac{n!}{s^{n+1}}$. En particular $\\mathcal{L}\\{t\\} = \\frac{1}{s^{2}}$."
+    },
+    {
+      "id": "la09",
+      "p": "El teorema de convolucion establece que...",
+      "f": "",
+      "opciones": ["$\\mathcal{L}\\{f * g\\} = F(s)\\,G(s)$", "$\\mathcal{L}\\{f + g\\} = F(s) + G(s)$", "$\\mathcal{L}\\{f' g\\} = F(s)'G(s)$", "$\\mathcal{L}^{-1}\\{F(s)\\} = f(t)$"],
+      "correcta": 0,
+      "explicacion": "Es la herramienta para volver a productores en el dominio de $s$ cuando en el tiempo hay convoluciones. Sirve, por ejemplo, para resolver ED con forzamiento no elemental."
+    },
+    {
+      "id": "la10",
+      "p": "Al aplicar Laplace a una ED con condicion inicial, se obtiene...",
+      "f": "",
+      "opciones": ["Otra ED de igual orden", "Una ecuacion algebraica en $Y(s)$", "Una integral impropia", "Un sistema de ecuaciones diferenciales"],
+      "correcta": 1,
+      "explicacion": "La derivada se convierte en multiplicacion por $s$ mas los terminos de las condiciones iniciales: ya no hay derivadas, solo algebraica."
+    },
+    {
+      "id": "la11",
+      "p": "La transformada inversa se aplica al final para obtener...",
+      "f": "",
+      "opciones": ["$Y(s)$", "$y(t)$", "$f'(t)$", "las condiciones iniciales"],
+      "correcta": 1,
+      "explicacion": "El camino es: transformar la ED, despejar $Y(s)$, y aplicar $\\mathcal{L}^{-1}$ para recuperar la funcion original $y(t)$."
+    },
+    {
+      "id": "la12",
+      "p": "¿Que limitacion tiene el metodo de Laplace en ED no lineales?",
+      "f": "",
+      "opciones": ["No existe: solo aplica a ED lineales con condiciones iniciales conocidas", "Solo aplica a ED de primer orden", "Aplica a cualquier ED si se conoce la solucion", "Solo aplica a ED de segundo orden"],
+      "correcta": 0,
+      "explicacion": "La propiedad $\\mathcal{L}\\{y'\\} = sY(s) - y(0)$ requiere que $y$ aparezca lineal. En algo como $y^2$ o $\\tan y$ la transformada ya no ayuda."
+    }
+  ]
+}

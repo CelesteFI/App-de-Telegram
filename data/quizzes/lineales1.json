@@ -1,0 +1,104 @@
+{
+  "id": "quiz_lineales1",
+  "tema": "lineales1",
+  "titulo": "Quiz de ED lineales de primer orden",
+  "descripcion": "Factor integrante, forma general y existencia de solucion.",
+  "preguntas": [
+    {
+      "id": "l101",
+      "p": "¿Cual es la forma general de una ED lineal de primer orden?",
+      "f": "",
+      "opciones": ["$y' + P(x)\\,y = f(x)$", "$y' = f(x)g(y)$", "$y' = a(x)y^{2}+b(x)y+c(x)$", "$M\\,dx + N\\,dy = 0$"],
+      "correcta": 0,
+      "explicacion": "Lineal significa primer grado en $y$ y coeficientes que dependen solo de $x$: $y' + P(x)y = f(x)$. Es la unica forma que siempre se puede resolver con factor integrante."
+    },
+    {
+      "id": "l102",
+      "p": "Para resolver $y' + P(x)\\,y = f(x)$ se multiplica por el factor integrante...",
+      "f": "",
+      "opciones": ["$\\mu(x) = e^{\\int P(x)dx}$", "$\\mu(x) = e^{\\int f(x)dx}$", "$\\mu(x) = P(x)$", "$\\mu(x) = x$"],
+      "correcta": 0,
+      "explicacion": "El factor integrante depende del coeficiente de $y$, que es $P(x)$. Al multiplicar, $(\\mu y)' = \\mu f$, que ya se integra directo."
+    },
+    {
+      "id": "l103",
+      "p": "Si $P(x) = 3$, ¿cual es el factor integrante?",
+      "f": "",
+      "opciones": ["$\\mu(x) = 3x$", "$\\mu(x) = e^{3x}$", "$\\mu(x) = x^{3}$", "$\\mu(x) = e^{x^{3}}$"],
+      "correcta": 1,
+      "explicacion": "$e^{\\int 3\\,dx} = e^{3x}$. La trampa clasica es confundir la integral con un producto."
+    },
+    {
+      "id": "l104",
+      "p": "Para $y' + \\dfrac{2}{x}\\,y = 0$ con $x > 0$, el factor integrante es...",
+      "f": "",
+      "opciones": ["$\\mu(x) = x^{2}$", "$\\mu(x) = e^{2x}$", "$\\mu(x) = 2x$", "$\\mu(x) = \\ln x$"],
+      "correcta": 0,
+      "explicacion": "$e^{\\int 2/x\\,dx} = e^{2\\ln x} = x^{2}$ en $x > 0$. El dominio importa: en $x < 0$ seria $x^{2}$ tambien, pero el signo del $\\ln$ obliga a cuidar el valor absoluto."
+    },
+    {
+      "id": "l105",
+      "p": "¿Cual es la solucion general de $y' + y = 0$?",
+      "f": "",
+      "opciones": ["$y = e^{x}$", "$y = Ce^{-x}$", "$y = Ce^{x}$", "$y = C + x$"],
+      "correcta": 1,
+      "explicacion": "Con $\\mu = e^{x}$: $(e^{x}y)' = 0$, luego $e^{x}y = C$ y $y = Ce^{-x}$. La $C$ siempre aparece: es la constante de integracion."
+    },
+    {
+      "id": "l106",
+      "p": "¿Cuantas constantes de integracion trae la solucion general de una ED lineal de primer orden?",
+      "f": "",
+      "opciones": ["Ninguna", "Una", "Dos", "Depende del orden del coeficiente"],
+      "correcta": 1,
+      "explicacion": "Se integra una sola vez, asi que aparece una sola $C$. Si ademas hay condicion inicial, esa $C$ queda determinada y no se cuenta como libre."
+    },
+    {
+      "id": "l107",
+      "p": "Si en $y' + P(x)y = f(x)$ se tiene $P(x) = 0$, entonces...",
+      "f": "",
+      "opciones": ["La ED es exacta", "La ED se reduce a $y' = f(x)$ y se integra en $x$", "No tiene solucion", "Es autonoma"],
+      "correcta": 1,
+      "explicacion": "Sin el termino con $y$ solo queda $y' = f(x)$: basta integrar en $x$ y sumar la constante. El factor integrante es $\\mu = 1$."
+    },
+    {
+      "id": "l108",
+      "p": "Para que el problema con dato inicial $y' = f(x,y)$, $y(x_{0}) = y_{0}$ tenga solucion unica, se necesita que...",
+      "f": "",
+      "opciones": ["$f$ sea lineal", "$f$ y $\\partial f/\\partial y$ sean continuas en un entorno (hipotesis de Lipschitz)", "$f$ sea homogenea", "$y_{0} = 0$"],
+      "correcta": 1,
+      "explicacion": "Es el teorema de existencia y unicidad (Picard-Lindelof). Exige continuidad de $f$ y de $\\partial f/\\partial y$ en un rectangulo alrededor del punto inicial."
+    },
+    {
+      "id": "l109",
+      "p": "¿Por que el metodo de factor integrante no se puede aplicar a $y' = y\\tan y$?",
+      "f": "",
+      "opciones": ["Porque no es de primer orden", "Porque la incognita aparece de forma no lineal, asi que no tiene forma $y' + P(x)y = f(x)$", "Porque no tiene solucion", "Porque el segundo miembro no depende de $x$"],
+      "correcta": 1,
+      "explicacion": "$\\tan y$ depende de la incognita, no se puede escribir como $P(x)y$ ni despejar a una $P(x)$. No toda ED de primer orden es lineal."
+    },
+    {
+      "id": "l110",
+      "p": "Al resolver una ED lineal de primer orden con condicion inicial, el resultado...",
+      "f": "",
+      "opciones": ["Tiene dos constantes, una por la integracion y otra por la condicion", "Tiene una sola constante ya determinada", "No tiene constantes", "Tiene las mismas constantes que la solucion general"],
+      "correcta": 1,
+      "explicacion": "La condicion inicial no agrega constantes: determina la unica que traia la solucion general. Por eso el problema con dato inicial tiene solucion unica."
+    },
+    {
+      "id": "l111",
+      "p": "La condicion $|g'(x)| < 1$ cerca de la raiz sirve para...",
+      "f": "",
+      "opciones": ["Asegurar la convergencia del metodo de punto fijo", "Asegurar la exactitud de una ED", "Determinar el orden de la ED", "Verificar que la ED es exacta"],
+      "correcta": 0,
+      "explicacion": "Es la condicion suficiente de convergencia para la iteracion $x_{n+1} = g(x_n)$ cuando $|g'| < 1$ en el punto fijo: acorta el error geométricamente."
+    },
+    {
+      "id": "l112",
+      "p": "¿Que cambio produce el factor integrante en el lado izquierdo de la ED?",
+      "f": "",
+      "opciones": ["Que $(\\mu(x)\\,y)$ sea la derivada de una funcion", "Que la ED se vuelva no lineal", "Que aparezca una constante extra", "Que $y$ deje de ser incognita"],
+      "correcta": 0,
+      "explicacion": "Se elige $\\mu$ justamente para que $\\mu y' + \\mu P(x)y = (\\mu y)'$. Esa es toda la magia del metodo: no hay que 'resolver' nada, solo integrar una derivada."
+    }
+  ]
+}

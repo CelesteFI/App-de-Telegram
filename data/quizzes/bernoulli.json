@@ -1,0 +1,104 @@
+{
+  "id": "quiz_bernoulli",
+  "tema": "bernoulli",
+  "titulo": "Quiz de Bernoulli y Riccati",
+  "descripcion": "Los dos casos no lineales de primer orden que si se pueden resolver.",
+  "preguntas": [
+    {
+      "id": "be01",
+      "p": "¿Cual es la forma de una ecuacion de Bernoulli?",
+      "f": "",
+      "opciones": ["$y' + P(x)y = Q(x)y^{n}$", "$y' = f(x)g(y)$", "$y' = a(x)y^{2}+b(x)y+c(x)$", "$y'' + a_{1}y' + a_{0}y = 0$"],
+      "correcta": 0,
+      "explicacion": "El termino $y^{n}$ con $n$ cualquiera es lo que la identifica. Si $n = 1$ se divide entre $y$ y resulta una ED lineal, por eso se pide $n \\neq 1$."
+    },
+    {
+      "id": "be02",
+      "p": "La ED $y' + y = x\\,y^{2}$ es de tipo Bernoulli con $n$ igual a...",
+      "f": "",
+      "opciones": ["1", "2", "3", "$1/2$"],
+      "correcta": 1,
+      "explicacion": "El exponente de $y$ en el lado derecho es 2, asi que $n = 2$."
+    },
+    {
+      "id": "be03",
+      "p": "¿Que sustitucion convierte una ED de Bernoulli en lineal?",
+      "f": "",
+      "opciones": ["$y = v^{1-n}$", "$y = v^{n}$", "$y = \\dfrac{1}{v}$", "$y = v + 1$"],
+      "correcta": 0,
+      "explicacion": "Con $y = v^{1-n}$ (es decir $v = y^{n-1}$) el termino $y^{n}$ se vuelve una $v$ lineal y la ED queda lineal en $v$."
+    },
+    {
+      "id": "be04",
+      "p": "Que pasa con una ED de Bernoulli cuando $n = 1$?",
+      "f": "",
+      "opciones": ["No tiene solucion", "Se reduce a una ED lineal (caso degenerado)", "Se vuelve exacta", "Deja de ser de primer orden"],
+      "correcta": 1,
+      "explicacion": "Con $n = 1$, $y' + P(x)y = Q(x)y$ y al dividir entre $y$: $\\frac{y'}{y} + P(x) = Q(x)$, que es lineal. Es el unico valor de $n$ donde el problema es trivial."
+    },
+    {
+      "id": "be05",
+      "p": "¿Cual es la forma canonica de una ecuacion de Riccati?",
+      "f": "",
+      "opciones": ["$y' = a(x)y^{2} + b(x)y + c(x)$", "$y' + P(x)y = f(x)$", "$y' = F(y/x)$", "$y' + y = Q(x)y^{n}$"],
+      "correcta": 0,
+      "explicacion": "Riccati es cuadratica en $y$. Con $a$, $b$ y $c$ constantes es autonoma y se separa; si son funciones de $x$, se reduce a lineal solo si se conoce una solucion particular."
+    },
+    {
+      "id": "be06",
+      "p": "Si se conoce una solucion particular $y_{p}$ de $y' = y^{2} + 2y$, ¿que se puede hacer?",
+      "f": "",
+      "opciones": ["Nada, la ED no tiene metodo", "Reducirla a una ED lineal con $y = y_{p} + v$ y $v = \\frac{1}{z}$", "Resolverla por series de Fourier", "Convertirla en exacta"],
+      "correcta": 1,
+      "explicacion": "Ese es el teorema clave de Riccati: con una solucion particular conocida la ED no lineal se linealiza usando la inversion $v = 1/z$."
+    },
+    {
+      "id": "be07",
+      "p": "¿Cual de estas ED es de tipo Riccati?",
+      "f": "",
+      "opciones": ["$y' = y^{3} + y$", "$y' = y^{2} - 1$", "$y' + y = x$", "$y'' + y = 0$"],
+      "correcta": 1,
+      "explicacion": "$y' = y^{2}-1$ es cuadratica en $y$ (con $a = 1$, $b = 0$, $c = -1$). $y' = y^{3}+y$ es cubica, asi que no es Riccati."
+    },
+    {
+      "id": "be08",
+      "p": "¿Cual de estas ED es de tipo Bernoulli?",
+      "f": "",
+      "opciones": ["$y' + \\dfrac{1}{x}y = x^{2}\\,y^{4}$", "$y' = y^{2}+1$", "$y' = x + y$", "$y'' = y$"],
+      "correcta": 0,
+      "explicacion": "Cumple $y' + P(x)y = Q(x)y^{n}$ con $P(x) = 1/x$, $Q(x) = x^{2}$ y $n = 4$."
+    },
+    {
+      "id": "be09",
+      "p": "Despues de aplicar $y = v^{1-n}$ en una ED de Bernoulli, ¿que se obtiene?",
+      "f": "",
+      "opciones": ["Una ED lineal de primer orden en $v$", "Una ED exacta", "Una ecuacion cubica en $v$", "Una ED autonoma"],
+      "correcta": 0,
+      "explicacion": "Justo por eso Bernoulli es util: aunque la ED original es no lineal, tras la sustitucion se resuelve con el metodo de factor integrante."
+    },
+    {
+      "id": "be10",
+      "p": "¿Por que el metodo de Bernoulli es importante en un curso de ED?",
+      "f": "",
+      "opciones": ["Porque permite sumar ED", "Porque demuestra que casi todas las ED de primer orden se resuelven asi", "Porque es el unico metodo que usa el polinomio caracteristico", "Porque convierte cualquier ED en exacta"],
+      "correcta": 1,
+      "explicacion": "Junto con Riccati, son las dos familias no lineales de primer orden con metodo general conocido. Las demas ED no lineales no tienen metodo universal."
+    },
+    {
+      "id": "be11",
+      "p": "La ED $y' = y^{2} - 1$ con coeficientes constantes se puede resolver ademas como...",
+      "f": "",
+      "opciones": ["ED exacta", "ED autonoma y separable", "ED homogenea con $v = y/x$", "ED lineal de segundo orden"],
+      "correcta": 1,
+      "explicacion": "Al no aparecer $x$, es autonoma; y como el lado derecho depende solo de $y$, tambien es separable. Varios metodos pueden servir para la misma ED."
+    },
+    {
+      "id": "be12",
+      "p": "En $y' + y = x\\,y^{-1}$ el exponente $n$ de Bernoulli es...",
+      "f": "",
+      "opciones": ["$-1$", "1", "2", "0"],
+      "correcta": 0,
+      "explicacion": "El termino es $y^{-1}$, o sea $n = -1$. Sirve para recordar que $n$ puede ser negativo y la sustitucion sigue siendo $y = v^{1-n}$."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+/* intruso.css — El intruso: ronda de sospechosos. */
+
+.intruso__pista {
+  background: linear-gradient(135deg, #1e293b, #7c3aed);
+  color: #fff;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 700;
+  text-align: center;
+}
+.intruso__rejilla { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+@media (max-width: 480px) { .intruso__rejilla { grid-template-columns: 1fr; } }
+.intruso__carta {
+  border: 2px solid #cbd5e1;
+  background: linear-gradient(135deg, #fff, #f1f5f9);
+  color: #1e293b;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: transform .15s ease;
+}
+.intruso__carta:nth-child(1) { border-top: 6px solid #0284c7; }
+.intruso__carta:nth-child(2) { border-top: 6px solid #db2777; }
+.intruso__carta:nth-child(3) { border-top: 6px solid #16a34a; }
+.intruso__carta:nth-child(4) { border-top: 6px solid #d97706; }
+.intruso__carta:hover { transform: translateY(-2px); }
+.intruso__carta--elegida {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px #7c3aed55;
+  animation: acierto-pop .3s ease;
+}
+.intruso__lupa { font-size: 22px; }
+.intruso__tex { font-size: 15px; color: #1e293b; }

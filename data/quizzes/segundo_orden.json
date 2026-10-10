@@ -1,0 +1,104 @@
+{
+  "id": "quiz_segundo_orden",
+  "tema": "segundo_orden",
+  "titulo": "Quiz de ED lineales de segundo orden",
+  "descripcion": "Polinomio caracteristico, raices reales y complejas, y coeficientes indeterminados.",
+  "preguntas": [
+    {
+      "id": "s201",
+      "p": "Para la ED homogenea $y'' + a_{1}y' + a_{0}y = 0$ con coeficientes constantes, ¿cual es el polinomio caracteristico?",
+      "f": "",
+      "opciones": ["$\\lambda^{2} + a_{1}\\lambda + a_{0} = 0$", "$\\lambda + a_{1} = 0$", "$\\lambda^{3} + a_{0}\\lambda = 0$", "$\\lambda^{2} - a_{0} = 0$"],
+      "correcta": 0,
+      "explicacion": "Se sustituye $y = e^{\\lambda x}$ (y con ello cada derivada introduce un factor $\\lambda$) y se obtiene un polinomio en $\\lambda$ del mismo grado que el orden."
+    },
+    {
+      "id": "s202",
+      "p": "Si las raices del polinomio caracteristico son reales y distintas, la solucion complementaria es...",
+      "f": "",
+      "opciones": ["$C_{1}e^{\\lambda_{1}x} + C_{2}e^{\\lambda_{2}x}$", "$e^{\\alpha x}(C_{1}\\cos \\beta x + C_{2}\\sin \\beta x)$", "$(C_{1} + C_{2}x)e^{\\lambda x}$", "$C_{1} + C_{2}x$"],
+      "correcta": 0,
+      "explicacion": "Cada raiz real $\\lambda$ aporta un termino $e^{\\lambda x}$ con su propia constante. La forma de la solucion depende de como sean las raices."
+    },
+    {
+      "id": "s203",
+      "p": "Si $\\lambda^{2} - 2\\lambda + 1 = 0$, ¿cual es la solucion complementaria?",
+      "f": "",
+      "opciones": ["$C_{1}e^{x} + C_{2}e^{2x}$", "$(C_{1} + C_{2}x)e^{x}$", "$C_{1}\\cos x + C_{2}\\sin x$", "$(C_{1}+C_{2}x)e^{2x}$"],
+      "correcta": 1,
+      "explicacion": "El polinomio es $(\\lambda-1)^{2}$: raiz doble $\\lambda = 1$. Una raiz doble repetida $m$ veces aporta $x^{m-1}e^{\\lambda x}$, aqui $xe^{x}$."
+    },
+    {
+      "id": "s204",
+      "p": "Si las raices son complejas $\\lambda_{1,2} = \\alpha \\pm i\\beta$, la solucion complementaria tiene la forma...",
+      "f": "",
+      "opciones": ["$C_{1}e^{\\alpha x} + C_{2}e^{-\\alpha x}$", "$e^{\\alpha x}(C_{1}\\cos \\beta x + C_{2}\\sin \\beta x)$", "$(C_{1}+C_{2}x)e^{\\alpha x}$", "$C_{1} + C_{2}\\sin \\beta x$"],
+      "correcta": 1,
+      "explicacion": "Las conjugadas se combinan con la formula de Euler: $e^{(\\alpha\\pm i\\beta)x} = e^{\\alpha x}(\\cos \\beta x \\pm i\\sin \\beta x)$ y las constantes se toman reales."
+    },
+    {
+      "id": "s205",
+      "p": "La ED $y'' + y = 0$ tiene solucion complementaria...",
+      "f": "",
+      "opciones": ["$C_{1}e^{x} + C_{2}e^{-x}$", "$C_{1}\\cos x + C_{2}\\sin x$", "$(C_{1}+C_{2}x)e^{x}$", "$C_{1}x + C_{2}$"],
+      "correcta": 1,
+      "explicacion": "$\\lambda^{2}+1=0$ da $\\lambda = \\pm i$: son las raices complejas tipicas, con parte real 0 y parte imaginaria 1."
+    },
+    {
+      "id": "s206",
+      "p": "Cuantas constantes libres tiene la solucion general de una ED lineal de segundo orden?",
+      "f": "",
+      "opciones": ["Una", "Dos", "Tres", "Depende de si es homogenea"],
+      "correcta": 1,
+      "explicacion": "Son dos: una por cada condicion inicial necesaria. En general, una ED de orden $n$ con condiciones iniciales en un punto da $n$ constantes."
+    },
+    {
+      "id": "s207",
+      "p": "En el metodo de coeficientes indeterminados, ¿cual es el primer paso?",
+      "f": "",
+      "opciones": ["Proponer la forma de la solucion particular $y_{p}$", "Determinar los coeficientes", "Resolver la ED homogenea asociada", "Aplicar la condicion inicial"],
+      "correcta": 2,
+      "explicacion": "Primero se resuelve la homogenea asociada para tener $y_{c}$; despues se propone $y_{p}$, se sustituye, se determinan los coeficientes y se suma $y = y_{c} + y_{p}$."
+    },
+    {
+      "id": "s208",
+      "p": "¿Que se hace cuando el termino no homogeneo coincide con una raiz del polinomio caracteristico?",
+      "f": "",
+      "opciones": ["Se propone $y_p$ normalmente", "Se multiplica $y_p$ por $x^{s}$, donde $s$ es el numero de veces que se repite la raiz", "Se descarta el termino no homogeneo", "La ED ya no tiene solucion"],
+      "correcta": 1,
+      "explicacion": "Es el caso de resonancia: hay que multiplicar por $x^{s}$ con $s$ igual a la multiplicidad de la raiz para no perder soluciones."
+    },
+    {
+      "id": "s209",
+      "p": "La ED $y'' - 4y = 0$ tiene polinomio caracteristico...",
+      "f": "",
+      "opciones": ["$\\lambda^{2} - 4 = 0$", "$\\lambda^{2} - 4\\lambda = 0$", "$\\lambda - 4 = 0$", "$\\lambda^{2} + 4 = 0$"],
+      "correcta": 0,
+      "explicacion": "Se conserva el signo de cada coeficiente tal como aparece: $y'' + 0\\,y' - 4y = 0$ da $\\lambda^{2} - 4 = 0$, con raices $\\pm 2$."
+    },
+    {
+      "id": "s210",
+      "p": "Si la solucion general es $y(x) = C_{1}\\sin x + C_{2}\\cos x$, ¿que se puede decir de las raices?",
+      "f": "",
+      "opciones": ["Son reales y distintas", "Son complejas con parte real igual a cero", "Son complejas con parte real negativa", "Hay una raiz doble"],
+      "correcta": 1,
+      "explicacion": "La forma $\\sin$, $\\cos$ sin factor $e^{\\alpha x}$ significa $\\alpha = 0$: las raices son $\\pm i$, imaginarias puras. Con $e^{\\alpha x}$ delante, la parte real seria $\\alpha$."
+    },
+    {
+      "id": "s211",
+      "p": "Una ED lineal de segundo orden con coeficientes constantes y segundo miembro no nulo se resuelve...",
+      "f": "",
+      "opciones": ["Solo con el polinomio caracteristico", "Con el polinomio caracteristico mas coeficientes indeterminados", "Solo por variacion de parametros", "Por separacion de variables"],
+      "correcta": 1,
+      "explicacion": "El polinomio caracteristico da $y_{c}$ (parte homogenea) y los coeficientes indeterminados dan $y_{p}$ para el termino no homogeneo. Con coeficientes variables, en cambio, toca variacion de parametros."
+    },
+    {
+      "id": "s212",
+      "p": "¿Que valor tiene el orden de la ED $\\dfrac{d^{2}y}{dx^{2}} + 3\\,y = 0$?",
+      "f": "",
+      "opciones": ["1", "2", "3"],
+      "correcta": 1,
+      "explicacion": "La mayor derivada es $\\frac{d^{2}y}{dx^{2}}$, de modo que el orden es 2 y por tanto tambien lo es el polinomio caracteristico."
+    }
+  ]
+}

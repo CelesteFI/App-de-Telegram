@@ -1,0 +1,104 @@
+{
+  "id": "quiz_clasificacion",
+  "tema": "clasificacion",
+  "titulo": "Quiz de clasificacion de ED",
+  "descripcion": "Orden, grado, linealidad y homogeneidad: como se decide cada etiqueta.",
+  "preguntas": [
+    {
+      "id": "cl01",
+      "p": "¿De que orden es la ecuacion $(y')^{2} + y'' + y = 0$?",
+      "f": "",
+      "opciones": ["De primer orden", "De segundo orden", "De tercer orden"],
+      "correcta": 1,
+      "explicacion": "El orden es el grado de la derivada mas alta presente. Ahi aparece $y''$, asi que es de segundo orden, aunque $(y')^2$ tenga exponente 2 (por eso ademas NO es lineal)."
+    },
+    {
+      "id": "cl02",
+      "p": "¿Cual de estas ecuaciones diferenciales es lineal?",
+      "f": "",
+      "opciones": ["$y' = e^{y}$", "$y' + x\\,y = e^{x}$", "$y' = y\tan y$", "$y' + y\\ln y = 0$"],
+      "correcta": 1,
+      "explicacion": "Solo $y' + x\\,y = e^{x}$ tiene la forma $y' + P(x)y = f(x)$: lineal en $y$ y sus derivadas, con coeficientes que dependen solo de $x$."
+    },
+    {
+      "id": "cl03",
+      "p": "¿Como se clasifica $y' + y = y\\sin x$?",
+      "f": "",
+      "opciones": ["Lineal no homogenea", "Lineal homogenea", "No lineal homogenea", "No lineal no homogenea"],
+      "correcta": 1,
+      "explicacion": "Pasando todo al mismo lado: $y' + (1 - \\sin x)\\,y = 0$. El segundo miembro es 0 y $y$ no esta elevada a ninguna potencia, asi que es lineal homogenea. Esta es la trampa clasica del examen."
+    },
+    {
+      "id": "cl04",
+      "p": "¿Cual de estas ED es lineal NO homogenea?",
+      "f": "",
+      "opciones": ["$y' + 4y = 0$", "$y'' + 3y' + 2y = e^{x}$", "$y' + y = 0$", "$y'' + y' = 0$"],
+      "correcta": 1,
+      "explicacion": "Las otras tres tienen segundo miembro cero (homogeneas). Solo $y'' + 3y' + 2y = e^{x}$ tiene un termino no nulo en el lado derecho."
+    },
+    {
+      "id": "cl05",
+      "p": "¿Es separable la ecuacion $(1+y^{2})\\,y' = x$?",
+      "f": "",
+      "opciones": ["Si, porque se puede escribir $y' = \\dfrac{x}{1+y^{2}} = f(x)g(y)$", "No, porque no tiene forma de producto", "No, porque no es lineal", "Solo si se despeja $y$ explicitamente"],
+      "correcta": 0,
+      "explicacion": "Basta con despejar $y'$: queda un producto de una funcion de $x$ por una de $y$. No hace falta integrar para decidir que es separable."
+    },
+    {
+      "id": "cl06",
+      "p": "¿Cual de estas ED es homogenea en el sentido NO lineal (lado derecho $= F(y/x)$)?",
+      "f": "",
+      "opciones": ["$y' = x + y$", "$\\dfrac{dy}{dx} = \\dfrac{x^{2}+y^{2}}{xy}$", "$y' + y = x$", "$y' = y^{2} - 1$"],
+      "correcta": 1,
+      "explicacion": "$\\frac{x^2+y^2}{xy}$ se puede escribir como $F(y/x)$: al dividir numerador y denominador entre $x^2$ queda $\\frac{1+(y/x)^2}{y/x}$. Ojo: este tipo de homogeneidad NO es lo mismo que 'lineal homogenea'."
+    },
+    {
+      "id": "cl07",
+      "p": "¿Que propiedad tiene $y' = y^{2} - 1$?",
+      "f": "",
+      "opciones": ["Es autonoma: la $x$ no aparece de forma explicita", "Es separable: $y' = f(x)g(y)$", "Es homogenea de tipo $F(y/x)$", "Es exacta"],
+      "correcta": 0,
+      "explicacion": "Es autonoma porque el lado derecho depende solo de $y$. Ojo: $y^2-1$ NO se puede escribir como producto $f(x)g(y)$ con $f$ no constante, asi que separarla no ayuda."
+    },
+    {
+      "id": "cl08",
+      "p": "¿Cual es el orden de $y^{(5)} - y' = 0$?",
+      "f": "",
+      "opciones": ["2", "3", "5"],
+      "correcta": 2,
+      "explicacion": "La derivada de mayor orden es la quinta, sin importar que tambien aparezca $y'$."
+    },
+    {
+      "id": "cl09",
+      "p": "¿Cual es el grado de $(y'')^{2} + y = 0$?",
+      "f": "",
+      "opciones": ["1", "2", "0"],
+      "correcta": 1,
+      "explicacion": "El grado es la potencia mas alta de la derivada de mayor orden: $(y'')^2$ tiene grado 2. Como la potencia es distinta de 1, la ED ademas no es lineal."
+    },
+    {
+      "id": "cl10",
+      "p": "La ecuacion $M(x,y)\\,dx + N(x,y)\\,dy = 0$ es exacta cuando...",
+      "f": "",
+      "opciones": ["$M$ y $N$ son continuas", "$\\dfrac{\\partial M}{\\partial y} = \\dfrac{\\partial N}{\\partial x}$", "$M$ y $N$ no dependen de $y$", "$M + N = 0$"],
+      "correcta": 1,
+      "explicacion": "Es la condicion de exactitud: si se cumple, $M\\,dx + N\\,dy$ es la diferencial total de alguna funcion $F(x,y)$ y la solucion es $F(x,y) = C$."
+    },
+    {
+      "id": "cl11",
+      "p": "¿Cual de estas es una ecuacion EN DERIVADAS PARCIALES?",
+      "f": "",
+      "opciones": ["$\\dfrac{\\partial u}{\\partial t} = \\alpha\\,\\dfrac{\\partial^{2}u}{\\partial x^{2}}$", "$\\dfrac{dy}{dx} = y$", "$\\dfrac{d^{2}y}{dx^{2}} + y = 0$", "$\\dfrac{dy}{dx} = x + y$"],
+      "correcta": 0,
+      "explicacion": "Aparecen derivadas parciales respecto a dos variables distintas ($x$ y $t$): es una EDP (el modelo de difusion de calor). Las otras son EDO."
+    },
+    {
+      "id": "cl12",
+      "p": "La ED $y' = a(x)y^{2} + b(x)y + c(x)$ pertenece al tipo...",
+      "f": "",
+      "opciones": ["Bernoulli", "Riccati", "Exacta", "Lineal de primer orden"],
+      "correcta": 1,
+      "explicacion": "Es una Riccati: es el unico caso no lineal de primer orden que, si se conoce una solucion particular, se reduce a una ED lineal."
+    }
+  ]
+}

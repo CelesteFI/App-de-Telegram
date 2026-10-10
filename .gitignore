@@ -1,0 +1,30 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# ---- Node / pruebas ----
+node_modules/
+
+# ---- Binarios pesados (tuneles locales) ----
+cloudflared.exe
+ngrok.exe
+
+# ---- Logs y estado de ejecucion ----
+*.log
+.run-pids.json
+
+# ---- Secretos locales (NUNCA subir) ----
+token.local.ps1
+.env
+*.secret
+
+# ---- Datos generados en ejecucion ----
+data/resultados/*
+!data/resultados/.gitkeep
+
+# ---- Respaldos viejos ----
+backup/

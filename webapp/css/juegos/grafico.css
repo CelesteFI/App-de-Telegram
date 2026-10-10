@@ -1,0 +1,30 @@
+/* grafico.css — El grafico falso: laboratorio de campos. */
+
+.grafico__marco {
+  border-radius: 18px;
+  padding: 12px;
+  background: linear-gradient(135deg, #0f172a, #1e1b4b 60%, #500f28);
+  box-shadow: 0 12px 26px rgba(15, 23, 42, .4);
+}
+.grafico__lienzo {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  cursor: crosshair;
+  touch-action: manipulation;
+}
+.grafico__pistas { display: flex; gap: 8px; flex-wrap: wrap; list-style: none; padding: 0; margin: 10px 0 0; }
+.grafico__pistas li {
+  background: rgba(255, 255, 255, .12);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, .25);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.grafico__pistas li--elegida, .grafico__pistas li.elegida {
+  background: #facc15;
+  color: #431407;
+  border-color: #facc15;
+}

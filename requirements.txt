@@ -1,0 +1,2 @@
+# Dependencias del backend y del bot (el servidor HTTP usa solo la stdlib).
+python-telegram-bot==22.8

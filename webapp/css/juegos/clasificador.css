@@ -1,0 +1,102 @@
+/* clasificador.css — Clasificador con CESTAS literales de mimbre. */
+
+.clasificador__reloj {
+  background: linear-gradient(135deg, #0ea5e9, #7c3aed);
+  color: #fff;
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-weight: 800;
+  text-align: center;
+}
+.clasificador__items { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.clasificador__item {
+  padding: 10px 14px;
+  border: 2px solid #0284c7;
+  border-radius: 14px;
+  background: #fff;
+  color: #0c4a6e;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: grab;
+  transition: transform .15s ease;
+  box-shadow: 0 4px 10px rgba(2, 132, 199, .2);
+}
+.clasificador__item:hover { transform: translateY(-2px) rotate(-.5deg); }
+.clasificador__item--elegido {
+  border-color: #facc15;
+  background: linear-gradient(135deg, #fefce8, #fef08a);
+  box-shadow: 0 0 0 3px #facc15aa;
+  animation: flotar 1.2s ease-in-out infinite;
+}
+@keyframes flotar { 0%, 100% { translate: 0 0; } 50% { translate: 0 -4px; } }
+.clasificador__item--puesto { opacity: .35; text-decoration: line-through; cursor: default; }
+.clasificador__item--volando {
+  position: fixed;
+  z-index: 90;
+  pointer-events: none;
+  transition: left .55s cubic-bezier(.3, .9, .4, 1.2), top .55s cubic-bezier(.3, .9, .4, 1.2), transform .55s ease, opacity .55s ease;
+}
+.clasificador__canastas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+.clasificador__canasta {
+  border: 0;
+  border-radius: 6px 6px 22px 22px;
+  padding: 40px 8px 12px;
+  cursor: pointer;
+  position: relative;
+  color: #fff;
+  font-weight: 800;
+  transition: transform .15s ease;
+  background:
+    repeating-linear-gradient(45deg, rgba(255,255,255,.14) 0 8px, transparent 8px 16px),
+    linear-gradient(180deg, var(--c1, #b45309), var(--c2, #92400e));
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .2), inset 0 6px 0 rgba(255, 255, 255, .35);
+}
+.clasificador__canasta::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 6px; right: 6px;
+  height: 26px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, .35);
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, .6);
+}
+.clasificador__canasta::after {
+  content: "🧺";
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 34px;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,.3));
+}
+.clasificador__canasta:nth-child(1) { --c1: #0284c7; --c2: #0369a1; }
+.clasificador__canasta:nth-child(2) { --c1: #db2777; --c2: #9d174d; }
+.clasificador__canasta:nth-child(3) { --c1: #16a34a; --c2: #14532d; }
+.clasificador__canasta:nth-child(4) { --c1: #7c3aed; --c2: #4c1d95; }
+.clasificador__canasta:hover { transform: scale(1.03); }
+.clasificador__canasta--llena { animation: cesta-salto .4s ease; }
+@keyframes cesta-salto { 0% { transform: scale(1); } 40% { transform: scale(1.08) rotate(-1.5deg); } 100% { transform: scale(1); } }
+.clasificador__canasta-titulo {
+  display: inline-block;
+  background: rgba(255, 255, 255, .96);
+  color: #431407;
+  font-weight: 800;
+  font-size: 14px;
+  border-radius: 10px;
+  padding: 3px 10px;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.clasificador__canasta-conteo {
+  display: inline-block;
+  background: rgba(255, 255, 255, .9);
+  color: #431407;
+  border-radius: 999px;
+  padding: 1px 10px;
+  font-size: 12px;
+  margin-top: 4px;
+}

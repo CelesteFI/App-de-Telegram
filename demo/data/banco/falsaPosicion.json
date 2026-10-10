@@ -1,0 +1,63 @@
+{
+  "id": "quiz_falsaPosicion",
+  "tema": "falsaPosicion",
+  "titulo": "Quiz de Falsa posicion",
+  "descripcion": "Plantilla basica. Reemplaza las preguntas por el banco real.",
+  "preguntas": [
+    {
+      "p": "Pregunta 1",
+      "f": "",
+      "opciones": [
+        "Correcta",
+        "Incorrecta",
+        "Incorrecta",
+        "Incorrecta"
+      ],
+      "correcta": 0
+    },
+    {
+      "p": "Pregunta 2",
+      "f": "",
+      "opciones": [
+        "Correcta",
+        "Incorrecta",
+        "Incorrecta",
+        "Incorrecta"
+      ],
+      "correcta": 0
+    },
+    {
+      "p": "Pregunta 3",
+      "f": "",
+      "opciones": [
+        "Correcta",
+        "Incorrecta",
+        "Incorrecta",
+        "Incorrecta"
+      ],
+      "correcta": 0
+    },
+    {
+      "p": "Pregunta 4",
+      "f": "",
+      "opciones": [
+        "Correcta",
+        "Incorrecta",
+        "Incorrecta",
+        "Incorrecta"
+      ],
+      "correcta": 0
+    },
+    {
+      "p": "Pregunta 5",
+      "f": "",
+      "opciones": [
+        "Correcta",
+        "Incorrecta",
+        "Incorrecta",
+        "Incorrecta"
+      ],
+      "correcta": 0
+    }
+  ]
+}

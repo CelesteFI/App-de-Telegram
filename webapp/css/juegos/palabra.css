@@ -1,0 +1,39 @@
+/* palabra.css — La palabra oculta: tablero de concurso. */
+
+.palabra__pista {
+  background: linear-gradient(135deg, #7c3aed, #0284c7);
+  color: #fff;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 700;
+  text-align: center;
+}
+.palabra__huecos { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin: 14px 0; }
+.palabra__hueco {
+  width: 38px; height: 46px;
+  display: grid; place-items: center;
+  border-radius: 10px;
+  background: #fff;
+  border: 2px solid #c4b5fd;
+  border-bottom-width: 5px;
+  font-size: 22px;
+  font-weight: 900;
+  color: #4c1d95;
+  animation: tarjeta-entra .2s ease;
+}
+.palabra__hueco--nuevo { animation: acierto-pop .3s ease; border-color: #16a34a; }
+.palabra__teclado { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.palabra__tecla {
+  min-width: 46px;
+  min-height: 46px;
+  border-radius: 12px;
+  font-size: 19px;
+  font-weight: 900;
+  border: 2px solid #7c3aed;
+  background: linear-gradient(135deg, #ede9fe, #fff);
+  color: #4c1d95;
+  cursor: pointer;
+  transition: transform .1s ease;
+}
+.palabra__tecla:hover { transform: translateY(-2px); }
+.palabra__tecla:active { transform: scale(.9); }

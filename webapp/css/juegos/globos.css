@@ -1,0 +1,68 @@
+/* globos.css — Tiro al blanco: cielo con globos de colores. */
+
+.globos__instruccion {
+  background: linear-gradient(135deg, #0284c7, #7c3aed);
+  color: #fff;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 800;
+  text-align: center;
+}
+.globos__cielo {
+  position: relative;
+  min-height: 340px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #7dd3fc 0%, #bae6fd 45%, #fef9c3 100%);
+  box-shadow: inset 0 0 40px rgba(2, 132, 199, .25);
+}
+.globos__cielo::before {
+  content: "☁️ ☁️ ☁️";
+  position: absolute;
+  top: 8px; left: 12px; right: 12px;
+  font-size: 26px;
+  opacity: .8;
+  letter-spacing: 30px;
+  animation: nubes 9s linear infinite;
+}
+@keyframes nubes { from { translate: -30px 0; } to { translate: 30px 0; } }
+.globo {
+  position: absolute;
+  bottom: -90px;
+  min-width: 92px;
+  max-width: 130px;
+  padding: 26px 10px 18px;
+  border: 0;
+  border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, .55);
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  animation: globo-sube linear infinite;
+  box-shadow: inset -8px -10px 0 rgba(255, 255, 255, .25);
+  overflow: hidden;
+}
+.globo::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  translate: -50% 0;
+  border: 7px solid transparent;
+  border-top-color: inherit;
+}
+.globo:nth-child(4n+1) { background: radial-gradient(circle at 30% 30%, #fda4af, #e11d48); }
+.globo:nth-child(4n+2) { background: radial-gradient(circle at 30% 30%, #93c5fd, #1d4ed8); }
+.globo:nth-child(4n+3) { background: radial-gradient(circle at 30% 30%, #86efac, #15803d); }
+.globo:nth-child(4n+4) { background: radial-gradient(circle at 30% 30%, #fde68a, #d97706); }
+@keyframes globo-sube {
+  from { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-220px) rotate(3deg); }
+  to { transform: translateY(-430px) rotate(-3deg); }
+}
+.globo--explotado { animation: globo-pop .3s ease forwards; }
+@keyframes globo-pop {
+  50% { transform: scale(1.35); opacity: 1; }
+  100% { transform: scale(0); opacity: 0; }
+}

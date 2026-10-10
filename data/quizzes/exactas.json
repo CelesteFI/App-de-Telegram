@@ -1,0 +1,104 @@
+{
+  "id": "quiz_exactas",
+  "tema": "exactas",
+  "titulo": "Quiz de ED exactas",
+  "descripcion": "Condicion de exactitud, factor integrante y solucion implicita.",
+  "preguntas": [
+    {
+      "id": "ex01",
+      "p": "Antes de resolver una ED $M\\,dx + N\\,dy = 0$, lo primero que se hace es...",
+      "f": "",
+      "opciones": ["Integrar $M$ respecto a $x$", "Calcular $\\partial M/\\partial y$ y $\\partial N/\\partial x$ y compararlos", "Buscar el factor integrante", "Despejar $dy/dx$"],
+      "correcta": 1,
+      "explicacion": "Sin la condicion de exactitud no se sabe ni por donde empezar: primero se verifica si ya es exacta y, si no, ahi si se busca el factor integrante."
+    },
+    {
+      "id": "ex02",
+      "p": "¿Es exacta la ecuacion $y\\,dx + x\\,dy = 0$?",
+      "f": "",
+      "opciones": ["Si, porque $\\partial M/\\partial y = 1 = \\partial N/\\partial x$", "No, porque $\\partial M/\\partial y = 1 \\ne 0$", "No, porque $M$ no depende de $y$", "Si, porque $y$ y $x$ son separables"],
+      "correcta": 0,
+      "explicacion": "Con $M = y$ y $N = x$ se cumple la condicion. De hecho $y\\,dx + x\\,dy = d(xy)$, asi que la solucion es $xy = C$."
+    },
+    {
+      "id": "ex03",
+      "p": "¿Es exacta la ecuacion $-y\\,dx + x\\,dy = 0$?",
+      "f": "",
+      "opciones": ["Si", "No, porque $\\partial M/\\partial y = -1 \\ne 1 = \\partial N/\\partial x$", "No, porque no es lineal", "No, porque $M + N = 0$"],
+      "correcta": 1,
+      "explicacion": "$M = -y$ y $N = x$: $\\partial M/\\partial y = -1$ mientras $\\partial N/\\partial x = 1$. No coincide, asi que no es exacta y buscariamos un factor integrante."
+    },
+    {
+      "id": "ex04",
+      "p": "¿Es exacta la ecuacion $(1+y^{2})\\,dx + 2xy\\,dy = 0$?",
+      "f": "",
+      "opciones": ["Si, porque ambas derivadas parciales valen $2y$", "Si, porque es lineal", "No, porque $N$ depende de $y$", "No, porque $M$ no depende de $x$"],
+      "correcta": 0,
+      "explicacion": "$M = 1+y^2$ da $\\partial M/\\partial y = 2y$ y $N = 2xy$ da $\\partial N/\\partial x = 2y$: coinciden en todo el dominio."
+    },
+    {
+      "id": "ex05",
+      "p": "Si $\\dfrac{\\partial M}{\\partial y} - \\dfrac{\\partial N}{\\partial x} = h(x)$, es decir, la diferencia depende SOLO de $x$, entonces el factor integrante es...",
+      "f": "",
+      "opciones": ["$\\mu(y) = e^{\\int h(x)dy}$", "$\\mu(x) = e^{\\int h(x)dx}$", "$\\mu(x) = x$", "No existe factor integrante"],
+      "correcta": 1,
+      "explicacion": "Si la diferencia es funcion de una sola variable, el factor integrante es funcion de esa misma variable: $\\mu(x) = e^{\\int h(x)dx}$."
+    },
+    {
+      "id": "ex06",
+      "p": "Cuando la diferencia $\\partial M/\\partial y - \\partial N/\\partial x$ depende solo de $y$, el factor integrante tiene la forma...",
+      "f": "",
+      "opciones": ["$\\mu(x) = e^{\\int g(y)dx}$", "$\\mu(y) = e^{\\int -g(y)\\,dy}$", "$\\mu(y) = y$", "$\\mu(x) = \\ln y$"],
+      "correcta": 1,
+      "explicacion": "Es el caso simetrico: si la diferencia es $g(y)$, el factor integrante se busca como funcion de $y$, con el signo cambiado al integrar."
+    },
+    {
+      "id": "ex07",
+      "p": "Cuando una ED es exacta, su solucion general tiene la forma...",
+      "f": "",
+      "opciones": ["$y = C$", "$F(x,y) = C$", "$F(x,y) = 0$", "$F(x,y) = \\ln x$"],
+      "correcta": 1,
+      "explicacion": "Si $M\\,dx + N\\,dy = dF$, integrar da $F(x,y) = C$, que es la solucion implicita. Por eso no siempre se puede despejar $y$."
+    },
+    {
+      "id": "ex08",
+      "p": "¿Que valor debe tomar $k$ para que la siguiente ED sea exacta?",
+      "f": "(x^{3}y^{k} - y^{9})\\,dx + (x^{4}y^{3} - 9xy^{8})\\,dy = 0",
+      "opciones": ["$k = 4$", "$k = 3$", "$k = 9$", "$k = 1$"],
+      "correcta": 0,
+      "explicacion": "Se exige $\\partial M/\\partial y = \\partial N/\\partial x$: $k\\,x^{3}y^{k-1} - 9y^{8} = 4x^{3}y^{3} - 9y^{8}$. Cancelando los terminos en $y^{8}$ queda $k\\,y^{k-1} = 4y^{3}$, luego $k - 1 = 3$ y $k = 4$."
+    },
+    {
+      "id": "ex09",
+      "p": "¿Que se revisa para decidir si una ED es lineal o exacta?",
+      "f": "",
+      "opciones": ["Solo el grado de la mayor derivada", "Las derivadas parciales de $M$ y $N$", "Si el lado derecho depende de $y$", "Si se puede integrar en forma cerrada"],
+      "correcta": 1,
+      "explicacion": "La linealidad se ve en como aparecen $y$ y sus derivadas; la exactitud se ve comparando $\\partial M/\\partial y$ con $\\partial N/\\partial x$."
+    },
+    {
+      "id": "ex10",
+      "p": "Si $\\dfrac{\\partial M}{\\partial y} = \\dfrac{\\partial N}{\\partial x}$ en todo el dominio, entonces la ED...",
+      "f": "",
+      "opciones": ["Es exacta y se resuelve por integracion directa", "Es lineal", "Es homogenea", "No tiene solucion"],
+      "correcta": 0,
+      "explicacion": "Exacto: esa igualdad ES la definicion de exactitud. No hace falta factor integrante ni despejar la derivada."
+    },
+    {
+      "id": "ex11",
+      "p": "Que valor toma el factor integrante de $\\mu(x) = e^{\\int P(x)dx}$ si $P(x) = \\frac{1}{x}$ y se trabaja en $x > 0$?",
+      "f": "",
+      "opciones": ["$\\mu(x) = x$", "$\\mu(x) = \\frac{1}{x}$", "$\\mu(x) = e^{x}$", "$\\mu(x) = \\ln x$"],
+      "correcta": 0,
+      "explicacion": "$e^{\\int \\frac{dx}{x}} = e^{\\ln x} = x$ en $x > 0$. En $x < 0$ daria $|x|$; por eso importa el dominio."
+    },
+    {
+      "id": "ex12",
+      "p": "Al multiplicar una ED por su factor integrante, lo que se consigue es que...",
+      "f": "",
+      "opciones": ["Se vuelva lineal", "Se vuelva exacta", "Se vuelva homogenea", "Se vuelva autonoma"],
+      "correcta": 1,
+      "explicacion": "Ese es el objetivo: el factor integrante deja exacta la ED, y entonces se integra directo. La ecuacion sigue siendo la misma, solo se multiplico por una funcion."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+/* memoria.css — Memorama fiesta: cartas que se voltean con color. */
+
+.memoria__tablero {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+  perspective: 800px;
+}
+.memoria__carta {
+  position: relative;
+  min-height: 96px;
+  border: 0;
+  border-radius: 16px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform .35s ease;
+  background: transparent;
+  padding: 0;
+}
+.memoria__cara {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  padding: 8px;
+  font-size: 13px;
+  backface-visibility: hidden;
+  overflow: auto;
+}
+.memoria__cara--tapa {
+  background: linear-gradient(135deg, #7c3aed, #db2777, #ea580c);
+  color: #fff;
+  font-size: 34px;
+  font-weight: 900;
+  box-shadow: 0 8px 18px rgba(124, 58, 237, .35);
+  animation: tapa-brilla 2.4s ease-in-out infinite;
+}
+@keyframes tapa-brilla {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.18); }
+}
+.memoria__cara--texto {
+  background: #fff;
+  color: #1e293b;
+  border: 2px solid #f0abfc;
+  transform: rotateY(180deg);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, .12);
+}
+.memoria__carta--vista { transform: rotateY(180deg); }
+.memoria__carta--hecha { transform: rotateY(180deg); animation: pareja-pop .4s ease; }
+.memoria__carta--hecha .memoria__cara--texto {
+  border-color: #16a34a;
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+}
+@keyframes pareja-pop {
+  0% { scale: 1; }
+  50% { scale: 1.1; }
+  100% { scale: 1; }
+}
+.memoria__progreso {
+  background: linear-gradient(135deg, #7c3aed, #db2777);
+  color: #fff;
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-weight: 700;
+}

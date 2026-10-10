@@ -1,0 +1,13 @@
+{
+  "name": "repaso-ed-webapp",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Pruebas de la Mini App de Repaso de Ecuaciones Diferenciales",
+  "type": "module",
+  "scripts": {
+    "smoke": "node pruebas/smoke.js"
+  },
+  "devDependencies": {
+    "jsdom": "^26.0.0"
+  }
+}

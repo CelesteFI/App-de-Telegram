@@ -1,0 +1,164 @@
+{
+  "id": "quiz_series_edp",
+  "tema": "series_edp",
+  "titulo": "Quiz de series de Fourier y EDP",
+  "descripcion": "Coeficientes de Fourier, convergencia y ecuaciones en derivadas parciales.",
+  "preguntas": [
+    {
+      "id": "se01",
+      "p": "Una funcion de periodo $T$ se representa con una serie de Fourier usando coeficientes...",
+      "f": "",
+      "opciones": [
+        "$a_{0}$, $a_{n}$ y $b_{n}$ obtenidos integrando sobre un periodo",
+        "$a$ y $b$ de una recta",
+        "Solo el valor medio",
+        "$C_{1}$ y $C_{2}$ como en una ED"
+      ],
+      "correcta": 0,
+      "explicacion": "La serie es $\\frac{a_{0}}{2} + \\sum_{n\\ge 1}(a_{n}\\cos(n\\omega_{0}t) + b_{n}\\sin(n\\omega_{0}t))$ con $\\omega_{0} = 2\\pi/T$ y cada coeficiente es una integral sobre un periodo."
+    },
+    {
+      "id": "se02",
+      "p": "¿A que valor converge la serie de Fourier en un punto de salto?",
+      "f": "",
+      "opciones": [
+        "Al valor de la funcion si es continua",
+        "Al promedio de los limites por izquierda y por derecha",
+        "A cero",
+        "La serie no converge ahi"
+      ],
+      "correcta": 1,
+      "explicacion": "Es el teorema de Dirichlet: la serie converge al promedio $\\frac{f(t^{-}) + f(t^{+})}{2}$. En un punto de continuidad recupera $f(t)$."
+    },
+    {
+      "id": "se03",
+      "p": "¿Que modelo representa la ecuacion $\\dfrac{\\partial u}{\\partial t} = \\alpha\\dfrac{\\partial^{2}u}{\\partial x^{2}}$?",
+      "f": "",
+      "opciones": [
+        "Una EDO lineal",
+        "La ecuacion de difusion de calor en una barra",
+        "La ecuacion de la cuerda vibrante",
+        "Una ecuacion exacta"
+      ],
+      "correcta": 1,
+      "explicacion": "Es el modelo de conduction de calor: temperatura en funcion de posicion y tiempo. Su homologo en una dimension sin la derivada temporal es la ecuacion de la onda."
+    },
+    {
+      "id": "se04",
+      "p": "La ecuacion de la onda (cuerda vibrante) se escribe...",
+      "f": "",
+      "opciones": [
+        "$\\dfrac{\\partial^{2}u}{\\partial t^{2}} = c^{2}\\dfrac{\\partial^{2}u}{\\partial x^{2}}$",
+        "$\\dfrac{\\partial u}{\\partial t} = \\alpha\\dfrac{\\partial^{2}u}{\\partial x^{2}}$",
+        "$\\dfrac{\\partial u}{\\partial x} = c\\,u$",
+        "$y'' + \\omega^{2}y = 0$"
+      ],
+      "correcta": 0,
+      "explicacion": "Tiene la segunda derivada temporal. Si se quita $\\partial^{2}u/\\partial t^{2}$ y se deja $\\alpha\\partial^{2}u/\\partial x^{2}$ se obtiene la ecuacion de calor."
+    },
+    {
+      "id": "se05",
+      "p": "Para una funcion de periodo $2L$, la serie de Fourier usa las funciones...",
+      "f": "",
+      "opciones": [
+        "$\\cos nx$ y $\\sin nx$",
+        "$\\cos\\frac{n\\pi x}{L}$ y $\\sin\\frac{n\\pi x}{L}$",
+        "$e^{nx}$",
+        "Los polinomios de Legendre"
+      ],
+      "correcta": 1,
+      "explicacion": "Con periodo $2L$ la frecuencia fundamental es $\\omega_{0} = \\pi/L$. Para periodo $2\\pi$ (es decir $L = \\pi$) se recuperan $\\cos nx$ y $\\sin nx$."
+    },
+    {
+      "id": "se06",
+      "p": "¿Como se separa una EDP lineal clasica como la ecuacion de calor?",
+      "f": "",
+      "opciones": [
+        "Escribiendo $u(x,t) = X(x)\\,T(t)$ e igualando coeficientes",
+        "Despejando $u$ como funcion de $t$ solamente",
+        "Aplicando la transformada de Laplace en $x$",
+        "Buscando un factor integrante en $t$"
+      ],
+      "correcta": 0,
+      "explicacion": "Separacion de variables: al sustituir y dividir se obtienen dos ecuaciones de Sturm-Liouville, una para $X(x)$ y otra para $T(t)$, ambas con condiciones de contorno."
+    },
+    {
+      "id": "se07",
+      "p": "La ecuacion de Laplace en dos dimensiones es...",
+      "f": "",
+      "opciones": [
+        "$\\dfrac{\\partial^{2}u}{\\partial x^{2}} + \\dfrac{\\partial^{2}u}{\\partial y^{2}} = 0$",
+        "$\\dfrac{\\partial u}{\\partial t} = \\alpha\\,u$",
+        "$\\dfrac{dy}{dx} = \\nabla u$",
+        "$\\dfrac{\\partial u}{\\partial x} = 0$"
+      ],
+      "correcta": 0,
+      "explicacion": "Se escribe $\\nabla^{2}u = 0$. En tres dimensiones habria que sumar tambien $\\partial^{2}u/\\partial z^{2}$."
+    },
+    {
+      "id": "se08",
+      "p": "Con las condiciones iniciales $u(x,0) = f(x)$, ¿se usa Fourier o Fourier-seno para resolver la ecuacion de calor en $[0,L]$ con $u(0,t) = u(L,t) = 0$?",
+      "f": "",
+      "opciones": [
+        "Serie de Fourier-seno",
+        "Serie de Fourier-coseno",
+        "Solo la solucion trivial",
+        "Ninguna: hay que usar Laplace"
+      ],
+      "correcta": 0,
+      "explicacion": "Las condiciones de Dirichlet (nulo en los extremos) obligan a usar la serie de Fourier-seno. Con nulo en una punta y derivada nula en la otra, la de coseno."
+    },
+    {
+      "id": "se09",
+      "p": "¿Que diferencia hay entre una EDO y una EDP?",
+      "f": "",
+      "opciones": [
+        "La EDO tiene incognita funcion de una variable; la EDP, de varias",
+        "La EDO siempre es lineal",
+        "La EDP nunca tiene condiciones iniciales",
+        "No hay diferencia, solo notacion"
+      ],
+      "correcta": 0,
+      "explicacion": "En la EDO las derivadas son de una sola variable ($dy/dx$); en la EDP hay derivadas parciales respecto a varias variables a la vez, y por eso se nombre 'parciales'."
+    },
+    {
+      "id": "se10",
+      "p": "El coeficiente $a_{0}$ de una serie de Fourier se obtiene como...",
+      "f": "",
+      "opciones": [
+        "el doble del promedio de $f$ en un periodo",
+        "el promedio de $f$ en un periodo",
+        "la derivada de $f$ en un extremo",
+        "la amplitud maxima de $f$"
+      ],
+      "correcta": 0,
+      "explicacion": "$a_{0} = \\frac{2}{T}\\int_{t_{0}}^{t_{0}+T} f(t)\\,dt$, o sea el doble del promedio. En la serie el termino constante aparece como $\\frac{a_{0}}{2}$, y ahi si queda igual al promedio (el 'nivel medio' de $f$). Por eso conviene no confundir $a_{0}$ con el valor constante de la serie."
+    },
+    {
+      "id": "se11",
+      "p": "Que condiciones deben cumplirse para que la serie de Fourier de $f$ tenga coeficientes calculables por integracion?",
+      "f": "",
+      "opciones": [
+        "Que $f$ sea derivable en todo punto",
+        "Que $f$ y $f'$ sean porcionadas continuas en el periodo (condiciones de Dirichlet)",
+        "Que $f$ sea par",
+        "Que el periodo sea $2\\pi$"
+      ],
+      "correcta": 1,
+      "explicacion": "Con esas condiciones la serie converge a $f$ en los puntos de continuidad y al promedio en los saltos. Si $f$ es par, la serie se simplifica (solo cosenos), pero no es un requisito."
+    },
+    {
+      "id": "se12",
+      "p": "Si $f$ es par en $[-L,L]$, su serie de Fourier contiene...",
+      "f": "",
+      "opciones": [
+        "solo terminos coseno",
+        "solo terminos seno",
+        "solo el termino $a_{0}$",
+        "todos los coeficientes con el mismo peso"
+      ],
+      "correcta": 0,
+      "explicacion": "Al ser $f(-x) = f(x)$ la funcion es simetrica respecto al eje vertical: los coeficientes $b_{n}$ se anulan. Eso simplifica el calculo."
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+/* deslizador.css — Tinder de ED: tarjeta que se desliza a VERDADERO o FALSO. */
+
+.deslizador { text-align: center; }
+.deslizador__zona {
+  position: relative;
+  border-radius: 20px;
+  padding: 26px 10px 18px;
+  background: linear-gradient(135deg, #0284c7, #7c3aed);
+  overflow: hidden;
+  box-shadow: 0 12px 26px rgba(2, 132, 199, .35);
+}
+.deslizador__zona::before {
+  content: "f(x) ∫ ∑ ∂ √ π";
+  position: absolute;
+  inset: 6px;
+  font-size: 15px;
+  letter-spacing: 8px;
+  color: rgba(255, 255, 255, .25);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.deslizador__formula {
+  display: inline-block;
+  background: #fff;
+  color: #0c4a6e;
+  border-radius: 14px;
+  padding: 12px 18px;
+  font-size: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .25);
+  transition: transform .15s ease;
+  position: relative;
+  z-index: 1;
+}
+.deslizador__afirmacion {
+  color: #fff;
+  font-weight: 800;
+  font-size: 17px;
+  margin: 12px 0 4px;
+  position: relative;
+  z-index: 1;
+}
+.deslizador__pista { width: 100%; accent-color: #facc15; margin: 10px 0 2px; }
+.deslizador__extremos { display: flex; justify-content: space-between; font-weight: 800; }
+.deslizador__extremos [data-lado="v"] {
+  background: #16a34a; color: #fff; padding: 6px 14px; border-radius: 999px;
+}
+.deslizador__extremos [data-lado="f"] {
+  background: #dc2626; color: #fff; padding: 6px 14px; border-radius: 999px;
+}
+.deslizador__ayuda { color: var(--tenue); font-size: 13px; margin-top: 8px; }
+.deslizador__sello {
+  position: absolute; top: 12px; padding: 4px 14px; border-radius: 10px;
+  font-weight: 900; font-size: 20px; transform: rotate(-12deg);
+  border: 3px solid; opacity: 0; z-index: 2;
+}
+.deslizador__sello--si { right: 12px; color: #16a34a; border-color: #16a34a; background: #f0fdf4ee; transform: rotate(12deg); }
+.deslizador__sello--no { left: 12px; color: #dc2626; border-color: #dc2626; background: #fef2f2ee; }

@@ -1,0 +1,23 @@
+# render.yaml — Blueprint para desplegar la Mini App y el bot en Render.
+#
+# En Render: New + Blueprint, conecta el repositorio de GitHub y listo.
+# El plan free duerme el servicio a los 15 min sin trafico; un pinger externo
+# cada 10 min (ver README) lo mantiene despierto y con el bot en linea.
+services:
+  - type: web
+    name: repaso-ed
+    runtime: python
+    plan: free
+    region: oregon
+    branch: main
+    autoDeploy: true
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    healthCheckPath: /
+    envVars:
+      # El token NO vive en el repo: se captura como secreto en el panel.
+      - key: BOT_TOKEN
+        sync: false
+      # Misma version que en local (.python-version).
+      - key: PYTHON_VERSION
+        value: 3.13.7

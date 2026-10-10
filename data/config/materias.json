@@ -1,0 +1,20 @@
+{
+  "materias": [
+    {
+      "id": "ed",
+      "nombre": "Ecuaciones Diferenciales",
+      "icono": "📐",
+      "descripcion": "Repaso conceptual: como se clasifican las ED, que metodo aplica y por que.",
+      "temas": [
+        { "id": "clasificacion", "nombre": "Clasificacion de ED", "resumen": "Orden, grado, linealidad y homogeneidad." },
+        { "id": "exactas", "nombre": "ED exactas", "resumen": "Ecuacion exacta y factor integrante." },
+        { "id": "lineales1", "nombre": "Lineales de primer orden", "resumen": "Factor integrante y condicion de existencia." },
+        { "id": "separable", "nombre": "Separables y homogeneas", "resumen": "Despejar en variables separadas." },
+        { "id": "bernoulli", "nombre": "Bernoulli y Riccati", "resumen": "Sustitucion(lineal) y caso particular." },
+        { "id": "segundo_orden", "nombre": "Lineales de segundo orden", "resumen": "Polinomio caracteristico y raices." },
+        { "id": "laplace", "nombre": "Transformada de Laplace", "resumen": "Propiedades y ecuaciones con condiciones iniciales." },
+        { "id": "series_edp", "nombre": "Series de Fourier y EDP", "resumen": "Series, problemas de calor y ED parciales." }
+      ]
+    }
+  ]
+}

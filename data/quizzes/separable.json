@@ -1,0 +1,164 @@
+{
+  "id": "quiz_separable",
+  "tema": "separable",
+  "titulo": "Quiz de ED separables y homogeneas",
+  "descripcion": "Despejar en variables separadas y el caso homogeneo no lineal.",
+  "preguntas": [
+    {
+      "id": "sp01",
+      "p": "¿Como se reconoce una ED separable?",
+      "f": "",
+      "opciones": [
+        "Porque el lado derecho se puede escribir como $f(x)\\,g(y)$",
+        "Porque es lineal",
+        "Porque no aparece $y$",
+        "Porque se puede despejar $y$ explicitamente"
+      ],
+      "correcta": 0,
+      "explicacion": "La forma $y' = f(x)g(y)$ es la definicion. Basta intentar escribir el lado derecho como producto de una funcion de $x$ por una de $y$."
+    },
+    {
+      "id": "sp02",
+      "p": "La solucion general de $y' = x^{2}y$ es...",
+      "f": "",
+      "opciones": [
+        "$y = e^{x^{3}}$",
+        "$y = Ce^{x^{3}/3}$",
+        "$y = Cx^{2}$",
+        "$y = Ce^{x^{2}/2}$"
+      ],
+      "correcta": 1,
+      "explicacion": "Separando: $\\frac{dy}{y} = x^{2}dx$ y luego $\\ln|y| = \\frac{x^{3}}{3} + C$. El resultado es $y = Ce^{x^{3}/3}$, con $C$ que puede ser positiva o negativa."
+    },
+    {
+      "id": "sp03",
+      "p": "¿Es separable $y' = \\sin y$?",
+      "f": "",
+      "opciones": [
+        "No, porque no aparece $x$",
+        "Si, porque $f(x) = 1$ y $g(y) = \\sin y$",
+        "Solo si se aplica Laplace",
+        "No, porque es autonoma"
+      ],
+      "correcta": 1,
+      "explicacion": "Que no aparezca $x$ es justamente el caso $f(x) = 1$: se separa $\\frac{dy}{\\sin y} = dx$ (se integhrando con $\\ln|\\tan(y/2)|$). Ademas de ser autonoma, si es separable."
+    },
+    {
+      "id": "sp04",
+      "p": "¿Por que $y' = x + y$ no se resuelve separando?",
+      "f": "",
+      "opciones": [
+        "Porque no es de primer orden",
+        "Porque el lado derecho no se puede escribir como producto $f(x)g(y)$",
+        "Porque es lineal",
+        "Porque no tiene condicion inicial"
+      ],
+      "correcta": 1,
+      "explicacion": "No hay manera de factorizar $x + y$ como producto de una funcion de $x$ y otra de $y$. En cambio si es lineal de primer orden: ahi el metodo es el factor integrante."
+    },
+    {
+      "id": "sp05",
+      "p": "Al separar una ED, ¿en que lado va la constante de integracion?",
+      "f": "",
+      "opciones": [
+        "siempre en el lado izquierdo",
+        "siempre en el lado derecho",
+        "en el lado de $y$ (donde se integro $\\frac{dy}{g(y)}$)",
+        "se elimina siempre"
+      ],
+      "correcta": 2,
+      "explicacion": "Al integrar $\\frac{dy}{g(y)} = f(x)dx$ la $C$ sale del lado de $y$: $H(y) = G(x) + C$. Por eso al despejar $y$ se suele escribir $y = \\pm e^{\\dots}$ o $Ce^{\\dots}$."
+    },
+    {
+      "id": "sp06",
+      "p": "Si $g(y) = 0$ para algun $y = y_{*}$, entonces...",
+      "f": "",
+      "opciones": [
+        "Ese valor es una solucion constante (equilibrio)",
+        "La ED no tiene solucion",
+        "Hay que dividir entre $y_{*}$ y se pierde la solucion",
+        "$y_{*}$ es la unica solucion"
+      ],
+      "correcta": 0,
+      "explicacion": "Al separar se divide entre $g(y)$ y se pueden perder las soluciones constantes. Hay que revisarlas aparte: si $g(y_{*}) = 0$, entonces $y \\equiv y_{*}$ es solucion."
+    },
+    {
+      "id": "sp07",
+      "p": "¿Cual es la ED homogenea clasica (no lineal)?",
+      "f": "",
+      "opciones": [
+        "$\\dfrac{dy}{dx} = F\\!\\left(\\dfrac{y}{x}\\right)$",
+        "$y' + P(x)y = f(x)$",
+        "$y'' + y = 0$",
+        "$y' + Q(x)y = 0$"
+      ],
+      "correcta": 0,
+      "explicacion": "Es $y' = F(y/x)$. Ojo con el doble sentido de 'homogenea': aqui no significa 'segundo miembro cero' sino 'depende solo del cociente $y/x$'."
+    },
+    {
+      "id": "sp08",
+      "p": "La ED $\\dfrac{dy}{dx} = \\dfrac{x^{2}+y^{2}}{xy}$ se clasifica como...",
+      "f": "",
+      "opciones": [
+        "Homogenea de tipo no lineal",
+        "Lineal homogenea",
+        "Exacta",
+        "De tercer orden"
+      ],
+      "correcta": 0,
+      "explicacion": "Al dividir numerador y denominador entre $x^{2}$ queda $\\frac{1 + (y/x)^{2}}{y/x}$, que es funcion solo de $y/x$. Se resuelve con $y = vx$."
+    },
+    {
+      "id": "sp09",
+      "p": "¿Que sustitucion linealiza una ED homogenea?",
+      "f": "",
+      "opciones": [
+        "$y = v\\,x$",
+        "$y = e^{v}x$",
+        "$y = v + x$",
+        "$y = \\dfrac{v}{x}$"
+      ],
+      "correcta": 0,
+      "explicacion": "Con $y = vx$ (y $y' = v + xv'$) el lado derecho, que era funcion de $y/x$, pasa a ser funcion de $v$ sola y la ED se separa."
+    },
+    {
+      "id": "sp10",
+      "p": "¿Cual de estas ED NO es separable?",
+      "f": "",
+      "opciones": [
+        "$y' = x^{2}y$",
+        "$y' = \\dfrac{1+y^{2}}{e^{x}}$",
+        "$y' = y^{2}\\cos x$",
+        "$y' = \\sin(xy)$"
+      ],
+      "correcta": 3,
+      "explicacion": "$y' = \\sin(xy)$ no se puede despejar como producto $f(x)\\,g(y)$: las dos variables aparecen multiplicadas dentro del seno, asi que no hay forma de separar. Cuidado con $y' = x/y$: esa SI es separable, porque $x/y = x \\cdot \\frac{1}{y}$ y queda $y\\,dy = x\\,dx$. Tampoco es lineal ni tiene la forma homogenea $F(y/x)$."
+    },
+    {
+      "id": "sp11",
+      "p": "La ED $y' = y^{2} - 1$ se puede clasificar como autonoma y...",
+      "f": "",
+      "opciones": [
+        "separable, porque $y^2-1$ es funcion solo de $y$",
+        "homogenea, porque no aparece $x$",
+        "lineal",
+        "exacta"
+      ],
+      "correcta": 0,
+      "explicacion": "Autonoma y separable van de la mano cuando el lado derecho depende solo de $y$: se separa $\\frac{dy}{y^{2}-1} = dx$. 'Autonoma' describe la estructura; 'separable' describe el metodo."
+    },
+    {
+      "id": "sp12",
+      "p": "¿Que pasa con las soluciones constantes de una ED separable $y' = f(x)g(y)$?",
+      "f": "",
+      "opciones": [
+        "Se pierden al dividir entre $g(y)$ y hay que buscarlas aparte",
+        "Aparecen automaticamente con la constante $C = 0$",
+        "No existen si $g$ es continua",
+        "Siempre son dos"
+      ],
+      "correcta": 0,
+      "explicacion": "Dividir entre $g(y)$ excluye los puntos donde $g(y) = 0$. Esos $y_{*}$ dan soluciones constantes $y \\equiv y_{*}$ que hay que reportar aparte. Es el error tipico en exámenes."
+    }
+  ]
+}
