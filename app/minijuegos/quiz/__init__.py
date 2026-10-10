@@ -11,8 +11,8 @@ POST /api/quiz/saltar            {intento, pos} -> cuenta como fallada
     GET  /api/quiz/records           mejor marca por tema
 """
 
-from ..nucleo import config
-from ..nucleo.http import ErrorApi, ruta
+from ...nucleo import config
+from ...nucleo.http import ErrorApi, ruta
 from . import banco, servicio
 
 
@@ -35,7 +35,7 @@ def listar_materias(peticion):
     usuario = peticion.exige_usuario()
     materias = banco.materias()
     if not materias:
-        raise ErrorApi("no hay materias configuradas en data/config/materias.json", 404)
+        raise ErrorApi("no hay materias configuradas en data/minijuegos/quiz/materias.json", 404)
     return {
         "ok": True,
         "materias": materias,

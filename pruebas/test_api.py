@@ -314,7 +314,24 @@ def probar_memorama():
             "memoria: el tablero no viaja con la solucion")
 
     intento, ronda = partida["intento"], 0
-    primera, segunda = cartas[0]["id"], cartas[1]["id"]
+
+    # Dos cartas distintas no siempre son pareja: buscamos un par que NO lo sea.
+    primera = segunda = None
+    for a in cartas:
+        for b in cartas:
+            if a["id"] == b["id"]:
+                continue
+            _, datos = pedir("POST", "/api/minijuegos/pareja",
+                             {"intento": intento, "ronda": ronda,
+                              "a": a["id"], "b": b["id"]})
+            if datos.get("pareja") is False:
+                primera, segunda = a["id"], b["id"]
+                break
+        if primera:
+            break
+    if not revisar(primera is not None,
+                   "memoria: hay dos cartas distintas que no son pareja"):
+        return
     codigo, datos = pedir("POST", "/api/minijuegos/pareja",
                           {"intento": intento, "ronda": ronda, "a": primera, "b": segunda})
     revisar(codigo == 200 and datos.get("pareja") is False,

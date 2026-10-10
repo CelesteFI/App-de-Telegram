@@ -9,22 +9,26 @@ bandas, circular...) y el navegador sabe pintarlo en un canvas. El servidor
 solo dice cual tipo es el correcto.
 
 Los tipos que el navegador sabe dibujar (deben coincidir con `CAMPOS` de
-webapp/js/minijuegos/grafico.js):
+webapp/js/juegos/grafico.js):
 
-    todo_horizontal  pendientes 0 en todas partes              (y' = 0)
+    todo_horizontal  pendientes 0 en todas partes               (y' = 0)
     constante        todas las pendientes iguales               (y' = 1)
     bandas_y         la pendiente depende de y                  (y' = y)
     bandas_y_neg     la pendiente depende de y, con signo opuesto (y' = -y)
     verticales_x     la pendiente depende de x                  (y' = x)
     creciente_x      crece con |x| y pasa por cero              (y' = x^2 - 1)
-    circular         tangentes a las circunferencias             (y' = -x/y)
+    circular         tangentes a las circunferencias            (y' = -x/y)
     seno             oscila con x                               (y' = cos x)
-    pendiente_alta   casi vertical en un lado del eje            (y' = 5x)
+    pendiente_alta   casi vertical en un lado del eje           (y' = 5x)
     divergente       patron asimetrico                          (y' = x + 2y)
+
+CONTENIDO: `data/minijuegos/grafico.json` con "casos":
+{"ecuacion","correcto","distractores","porque","d"}.
 """
 
 from . import base
 
+# Metadatos del juego (que muestra el menu).
 JUEGO = {
     "id": "grafico",
     "titulo": "El Grafico Falso",
@@ -35,49 +39,29 @@ JUEGO = {
     "etiquetas": ["visual", "intuicion"],
 }
 
-# (ecuacion, tipo correcto, distractores, explicacion, dificultad)
-CASOS = [
-    (r"\dfrac{dy}{dx} = 0", "todo_horizontal", ["circular", "seno"],
-     r"La derivada es 0 en todo punto: las soluciones son rectas horizontales $y = C$.", 1),
-    (r"\dfrac{dy}{dx} = y", "bandas_y", ["todo_horizontal", "verticales_x"],
-     r"La pendiente depende de $y$: horizontal sobre el eje $x$, positiva arriba y negativa abajo.", 1),
-    (r"\dfrac{dy}{dx} = -y", "bandas_y_neg", ["todo_horizontal", "bandas_y"],
-     r"La pendiente se opone al valor de $y$: hacia abajo por encima del eje y hacia abajo... (hacia el eje) por debajo.", 1),
-    (r"\dfrac{dy}{dx} = x", "verticales_x", ["bandas_y", "circulo"],
-     r"Aqui la pendiente depende de $x$: las flechas son constantes en cada columna vertical.", 2),
-    (r"\dfrac{dy}{dx} = \dfrac{-x}{y}", "circular", ["bandas_y", "verticales_x"],
-     r"Es la ED de las circunferencias centradas en el origen: $x^2 + y^2 = C$.", 2),
-    (r"\dfrac{dy}{dx} = \cos x", "seno", ["todo_horizontal", "verticales_x"],
-     r"La pendiente solo depende de $x$ y oscila entre -1 y 1.", 2),
-    (r"\dfrac{dy}{dx} = 1", "constante", ["verticales_x", "seno"],
-     r"Todas las pendientes valen 1: rectas de pendiente 1.", 1),
-    (r"\dfrac{dy}{dx} = x^{2} - 1", "creciente_x", ["todo_horizontal", "bandas_y"],
-     r"La pendiente depende de $x$ y se anula en $x = \pm 1$.", 3),
-    (r"\dfrac{dy}{dx} = x + 2y", "divergente", ["todo_horizontal", "constante"],
-     r"Depende de $x$ y de $y$: el patron no es ni de columnas ni de bandas.", 3),
-    (r"\dfrac{dy}{dx} = 5x", "pendiente_alta", ["todo_horizontal", "constante"],
-     r"La pendiente se hace muy grande en valor absoluto: el campo se ve casi vertical lejos del eje $y$.", 3),
-]
-
 
 def rondas(azar, nivel: str, cantidad: int, tema=None) -> list[dict]:
+    """Toma casos del JSON y baraja el tipo correcto con sus distractores."""
     limite = base.nivel_limite(nivel)
-    pool = [c for c in CASOS if c[4] <= limite]
+    casos = base.contenido("grafico").get("casos", [])
+    pool = [c for c in casos if c.get("d", 1) <= limite]
     elegidos = base.tomar(azar, pool, cantidad)
     salida = []
-    for i, (ecuacion, correcto, distractores, porque, _d) in enumerate(elegidos):
-        tipos = base.barajar(azar, [correcto] + list(distractores))
+    for i, caso in enumerate(elegidos):
+        correcto = caso["correcto"]
+        tipos = base.barajar(azar, [correcto] + list(caso.get("distractores", [])))
         salida.append({
             "id": f"g{i}",
-            "ecuacion": ecuacion,
+            "ecuacion": caso["ecuacion"],
             "tipos": tipos,
             "solucion": tipos.index(correcto),
-            "porque": porque,
+            "porque": caso["porque"],
         })
     return salida
 
 
 def publico(ronda: dict) -> dict:
+    """Sin `solucion`: el tipo correcto se queda en el servidor."""
     return {"id": ronda["id"], "ecuacion": ronda["ecuacion"], "tipos": ronda["tipos"]}
 
 

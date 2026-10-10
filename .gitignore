@@ -9,13 +9,22 @@ env/
 # ---- Node / pruebas ----
 node_modules/
 
+# ---- Sistema operativo / editores ----
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
+
 # ---- Binarios pesados (tuneles locales) ----
 cloudflared.exe
 ngrok.exe
 
 # ---- Logs y estado de ejecucion ----
 *.log
+logs/
 .run-pids.json
+lanzamiento/.run-pids.json
 
 # ---- Secretos locales (NUNCA subir) ----
 token.local.ps1
@@ -28,3 +37,6 @@ data/resultados/*
 
 # ---- Respaldos viejos ----
 backup/
+
+# ---- Extras: demo anterior, PDF/png de trabajo (no hacen falta para Render) ----
+extras/

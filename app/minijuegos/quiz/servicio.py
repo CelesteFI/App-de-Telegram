@@ -15,9 +15,9 @@ import threading
 import time
 import uuid
 
-from ..nucleo import config
-from ..nucleo.almacen import escribir_json, leer_json, marca_de_tiempo
-from ..nucleo.http import ErrorApi
+from ...nucleo import config
+from ...nucleo.almacen import escribir_json, leer_json, marca_de_tiempo
+from ...nucleo.http import ErrorApi
 from . import banco
 
 _lock = threading.Lock()

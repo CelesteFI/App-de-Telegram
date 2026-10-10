@@ -7,8 +7,10 @@ Un modulo roto se avisa pero no tumba la app.
 Para agregar un minijuego nuevo:
   1) copia `plantilla.py` como `<id>.py` en esta carpeta
   2) defines JUEGO, rondas, publico y califica
-  3) crea `webapp/js/minijuegos/<id>.js` (logica) y
-     `webapp/css/minijuegos/<id>.css` (estilos)
+  3) pon su contenido en `data/minijuegos/<id>.json` (lo lee con
+     `base.contenido("<id>")`)
+  4) crea `webapp/js/juegos/<id>.js` (logica) y registralo en
+     `webapp/js/juegos/index.js`; los estilos van en `webapp/css/`
 Listo: aparece solo en el catalogo.
 """
 
@@ -25,8 +27,8 @@ _CARPETA = os.path.dirname(os.path.abspath(__file__))
 
 REQUERIDO = ("rondas", "publico", "califica")
 
-# Modulos de infraestructura: no son juegos.
-NO_ES_JUEGO = {"base", "registro", "servicio", "plantilla"}
+# Modulos/carpetas de infraestructura: no son juegos.
+NO_ES_JUEGO = {"base", "registro", "servicio", "plantilla", "quiz"}
 
 
 def _cargar_modulo(nombre: str):

@@ -22,8 +22,12 @@ Un minijuego es un modulo `.py` de esta carpeta que expone:
 
 Regla de oro: la respuesta correcta se decide aqui, en Python, y se califica
 en el servidor. El navegador solo manda lo que el jugador eligio.
+
+El CONTENIDO (casos, pares, pasos...) ya no vive en el .py: cada minijuego lo
+lee de `data/minijuegos/<id>.json` con `contenido("<id>")`.
 """
 
+import os
 import random
 
 PUNTAJE_MAX = 100
@@ -69,3 +73,18 @@ def tomar(azar: random.Random, lista: list, n: int) -> list:
 def puntos(fraccion: float) -> int:
     """Convierte una fraccion 0..1 en puntos 0..PUNTAJE_MAX."""
     return max(0, min(PUNTAJE_MAX, round(PUNTAJE_MAX * max(0.0, min(1.0, fraccion)))))
+
+
+def contenido(juego_id: str) -> dict:
+    """Contenido del minijuego, leido de `data/minijuegos/<juego_id>.json`.
+
+    Cada juego guarda sus casos/pares/pasos en su propio JSON, asi que agregar
+    contenido nuevo no toca el codigo: solo se edita el archivo. La cache de
+    `nucleo/almacen.py` se invalida sola cuando cambia la fecha del archivo.
+    Devuelve {} si el archivo no existe o esta roto (el juego avisara).
+    """
+    from ..nucleo import config
+    from ..nucleo.almacen import leer_json
+
+    datos = leer_json(os.path.join(config.MINIJUEGOS_DIR, f"{juego_id}.json"), {})
+    return datos if isinstance(datos, dict) else {}

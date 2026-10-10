@@ -1,0 +1,150 @@
+{
+  "pozo": {
+    "separable": [
+      "y' = x^{2}y",
+      "y' = \\sin y",
+      "y' = e^{y}",
+      "y' = \\dfrac{y}{1+x}",
+      "y' = y^{2}\\cos x",
+      "y' = \\dfrac{1+y^{2}}{e^{x}}",
+      "y' = \\dfrac{y}{\\sqrt{1+x^{2}}}"
+    ],
+    "homogenea": [
+      "y' = 1 + \\dfrac{y}{x}",
+      "y' = \\dfrac{x^{2}+y^{2}}{xy}",
+      "y' = \\dfrac{y^{2}-x^{2}}{xy}",
+      "y' = \\tan\\!\\left(\\dfrac{y}{x}\\right)",
+      "y' = \\dfrac{x^{2}}{y} + y"
+    ],
+    "exacta": [
+      "y\\,dx + x\\,dy = 0",
+      "(1+y^{2})\\,dx + 2xy\\,dy = 0",
+      "(2xy + e^{x})\\,dx + x^{2}\\,dy = 0",
+      "-\\sin x\\,dx + \\cos y\\,dy = 0",
+      "x^{2}\\,dx + y^{2}\\,dy = 0"
+    ],
+    "lineal1": [
+      "y' + 3y = x",
+      "y' - y = e^{x}",
+      "y' + x\\,y = 1",
+      "y' + 2y = 5",
+      "y' + \\frac{y}{x} = \\ln x",
+      "y' + y = e^{x}\\cos x"
+    ],
+    "nolineal": [
+      "y' = y\\tan y",
+      "y' = \\frac{x}{y}",
+      "y' = y^{3} + 1",
+      "y' + y\\ln y = 0",
+      "y'' = y'^{2}",
+      "y' = \\sqrt{1+y^{2}}"
+    ],
+    "bernoulli": [
+      "y' + y = x\\,y^{2}",
+      "y' + 2y = e^{x}\\,y^{3}",
+      "y' + \\frac{1}{x}y = x^{2}\\,y^{4}",
+      "y' + y = x\\,y^{-1}"
+    ],
+    "orden1": [
+      "y' + y = e^{x}",
+      "y' = x\\,y",
+      "x\\,y' = y^{2}",
+      "y' + y\\ln y = 0"
+    ],
+    "orden2": [
+      "y'' + y' + y = 0",
+      "y'' - 4y = 0",
+      "(y')^{2} + y'' = 0",
+      "y'' + p(x)y' + q(x)y = f(x)",
+      "y'' = y\\,y'"
+    ],
+    "orden3": [
+      "y''' - y = 0",
+      "y''' + y' = x",
+      "\\frac{d^{3}y}{dx^{3}} = y^{2}",
+      "y^{(4)} + y = 0"
+    ]
+  },
+  "etiquetas": {
+    "separable": "Separable",
+    "homogenea": "Homogenea",
+    "exacta": "Exacta",
+    "lineal1": "Lineal 1er orden",
+    "nolineal": "No lineal",
+    "bernoulli": "Bernoulli",
+    "orden1": "Orden 1",
+    "orden2": "Orden 2",
+    "orden3": "Orden 3"
+  },
+  "rondas": [
+    {
+      "categorias": [
+        "separable",
+        "homogenea",
+        "exacta"
+      ],
+      "por_categoria": 6,
+      "segundos": 45,
+      "d": 1
+    },
+    {
+      "categorias": [
+        "lineal1",
+        "nolineal"
+      ],
+      "por_categoria": 6,
+      "segundos": 35,
+      "d": 1
+    },
+    {
+      "categorias": [
+        "orden1",
+        "orden2",
+        "orden3"
+      ],
+      "por_categoria": 6,
+      "segundos": 35,
+      "d": 2
+    },
+    {
+      "categorias": [
+        "separable",
+        "bernoulli"
+      ],
+      "por_categoria": 6,
+      "segundos": 40,
+      "d": 2
+    },
+    {
+      "categorias": [
+        "lineal1",
+        "separable",
+        "homogenea",
+        "exacta"
+      ],
+      "por_categoria": 8,
+      "segundos": 45,
+      "d": 3
+    },
+    {
+      "categorias": [
+        "bernoulli",
+        "nolineal"
+      ],
+      "por_categoria": 6,
+      "segundos": 40,
+      "d": 3
+    }
+  ],
+  "explicar": {
+    "separable": "$y' = f(x)\\,g(y)$: se separan las variables.",
+    "homogenea": "$y' = F(y/x)$: el lado derecho solo depende de $y/x$.",
+    "exacta": "$\\partial M/\\partial y = \\partial N/\\partial x$.",
+    "lineal1": "$y' + P(x)y = f(x)$.",
+    "nolineal": "La incognita aparece de otra forma (logaritmo, raiz, potencia > 1, producto).",
+    "bernoulli": "$y' + P(x)y = Q(x)y^{n}$ con $n \\ne 1$.",
+    "orden1": "Mayor derivada: $y'$.",
+    "orden2": "Mayor derivada: $y''$.",
+    "orden3": "Mayor derivada: $y'''$."
+  }
+}

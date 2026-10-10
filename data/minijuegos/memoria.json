@@ -1,0 +1,79 @@
+{
+  "cantidad_por_nivel": {
+    "facil": 4,
+    "medio": 5,
+    "dificil": 6
+  },
+  "pares": [
+    {
+      "concepto": "EDO lineal de primer orden",
+      "mate": "y' + P(x)\\,y = f(x)",
+      "d": 1
+    },
+    {
+      "concepto": "Ecuacion exacta",
+      "mate": "M\\,dx + N\\,dy = 0 \\;\\text{ con }\\; \\partial M/\\partial y = \\partial N/\\partial x",
+      "d": 1
+    },
+    {
+      "concepto": "Factor integrante",
+      "mate": "\\mu(x) = e^{\\int P(x)\\,dx}",
+      "d": 1
+    },
+    {
+      "concepto": "Forma separable",
+      "mate": "\\dfrac{dy}{dx} = f(x)\\,g(y)",
+      "d": 1
+    },
+    {
+      "concepto": "ED homogenea (no lineal)",
+      "mate": "\\dfrac{dy}{dx} = F\\!\\left(\\dfrac{y}{x}\\right)",
+      "d": 2
+    },
+    {
+      "concepto": "Ecuacion de Bernoulli",
+      "mate": "y' + P(x)\\,y = Q(x)\\,y^{n}",
+      "d": 1
+    },
+    {
+      "concepto": "Ecuacion de Riccati",
+      "mate": "y' = a(x)y^{2} + b(x)y + c(x)",
+      "d": 2
+    },
+    {
+      "concepto": "Polinomio caracteristico",
+      "mate": "\\lambda^{2} + a_{1}\\lambda + a_{0} = 0",
+      "d": 1
+    },
+    {
+      "concepto": "ED parcial del calor (difusion)",
+      "mate": "\\dfrac{\\partial u}{\\partial t} = \\alpha\\,\\dfrac{\\partial^{2}u}{\\partial x^{2}}",
+      "d": 2
+    },
+    {
+      "concepto": "Autonoma",
+      "mate": "\\dfrac{dy}{dx} = g(y) \\quad (\\text{sin } x \\text{ expli\\u0301cita})",
+      "d": 2
+    },
+    {
+      "concepto": "Orden de la ED",
+      "mate": "\\text{grado de la derivada m\\u00e1s alta presente}",
+      "d": 1
+    },
+    {
+      "concepto": "ED de Euler (Cauchy)",
+      "mate": "x^{2}y'' + a\\,x\\,y' + b\\,y = 0",
+      "d": 3
+    },
+    {
+      "concepto": "Coeficiente de un sistema lineal",
+      "mate": "m = \\det(A - \\lambda I)",
+      "d": 3
+    },
+    {
+      "concepto": "Existencia y unicidad",
+      "mate": "|g'(x)| < 1 \\quad \\text{cerca de la ra\\u00edz (punto fijo)}",
+      "d": 3
+    }
+  ]
+}

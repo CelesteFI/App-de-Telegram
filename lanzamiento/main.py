@@ -15,7 +15,17 @@ Uso local para probar:
 """
 
 import os
+import sys
 import threading
+
+# Este archivo vive en lanzamiento/, pero importa el paquete "app" y el modulo
+# "bot". Aseguramos que esten en sys.path sin importar como se invoque (a mano
+# con "python lanzamiento/main.py" o desde Render con la misma ruta).
+_AQUI = os.path.dirname(os.path.abspath(__file__))
+_RAIZ = os.path.dirname(_AQUI)
+for _ruta in (_AQUI, _RAIZ):
+    if _ruta not in sys.path:
+        sys.path.insert(0, _ruta)
 
 
 def _url_publica() -> str:

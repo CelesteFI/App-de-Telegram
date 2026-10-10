@@ -6,13 +6,18 @@ con funciones escritas. Hay que explotar SOLO los que cumplen, antes de que
 salgan de la pantalla.
 
 Detalle importante: NO se verifica por computadora si cada funcion es
-solución (eso seria calcular, y este juego es de teoria). Cada globo trae
+solucion (eso seria calcular, y este juego es de teoria). Cada globo trae
 declarado si cumple o no, y el servidor guarda la lista de los correctos
 para calificar. Asi el jugador decide leyendo la ED, no resolviendo.
+
+CONTENIDO: `data/minijuegos/globos.json` con:
+  - "segundos": duracion de cada ronda.
+  - "rondas": [{"instruccion","globos":[{"tex","cumple"}],"porque","d"}].
 """
 
 from . import base
 
+# Metadatos del juego (que muestra el menu).
 JUEGO = {
     "id": "globos",
     "titulo": "Tiro al Blanco Teorico",
@@ -23,62 +28,32 @@ JUEGO = {
     "etiquetas": ["visual", "reaccion"],
 }
 
-# (instruccion, [(funcion, cumple)], explicacion, dificultad)
-RONDAS = [
-    (r"Explota las funciones que sean soluciones de $y'' + y = 0$",
-     [(r"\sin x", True), (r"\cos x", True), (r"e^{x}", False), (r"x^{2}", False)],
-     r"El polinomio $\lambda^{2}+1=0$ tiene raices $\pm i$: las soluciones son combinaciones de $\sin x$ y $\cos x$.",
-     1),
-
-    (r"Explota las funciones que sean soluciones de $y' = y$",
-     [(r"e^{x}", True), (r"x", False), (r"\sin x", False), (r"x^{2}", False)],
-     r"Para $y'=y$ la unica familia de soluciones es $Ce^{x}$.", 1),
-
-    (r"Explota las funciones que sean soluciones de $y' = 0$",
-     [(r"5", True), (r"-3", True), (r"x", False), (r"x^{2}", False)],
-     r"$y'=0$ significa pendiente cero: las soluciones son constantes $y = C$.", 1),
-
-    (r"Explota las funciones que sean soluciones de $y'' - 2y' + y = 0$",
-     [(r"x\,e^{x}", True), (r"e^{x}", True), (r"e^{2x}", False), (r"x", False)],
-     r"Raiz doble $\lambda = 1$: las soluciones son $(C_1 + C_2x)e^{x}$.", 2),
-
-    (r"Explota las funciones que sean soluciones de $y'' + 4y = 0$",
-     [(r"\sin 2x", True), (r"\cos 2x", True), (r"e^{x}", False), (r"x", False)],
-     r"$\lambda^{2}+4=0$ da $\lambda = \pm 2i$: aparecen $\sin 2x$ y $\cos 2x$.", 2),
-
-    (r"Explota las funciones que sean soluciones de $y' = \cos x$",
-     [(r"\sin x", True), (r"-\cos x", False), (r"\cos x", False), (r"x", False)],
-     r"Hay que derivar cada globo y ver cual da exactamente $\cos x$.", 2),
-
-    (r"Explota las funciones que sean soluciones de $y'' + y' = 0$",
-     [(r"1", True), (r"e^{-x}", True), (r"x", False), (r"e^{x}", False)],
-     r"$\lambda(\lambda + 1) = 0$: raices 0 y -1, o sea $C_1 + C_2 e^{-x}$.", 3),
-
-    (r"Explota las funciones que sean soluciones de $y'' = 0$",
-     [(r"3x + 2", True), (r"x^{2}", False), (r"e^{x}", False), (r"\sin x", False)],
-     r"$y''=0$ integrated da rectas $y = ax + b$.", 3),
-]
-
 
 def rondas(azar, nivel: str, cantidad: int, tema=None) -> list[dict]:
+    """Toma rondas del JSON y guarda que globos son soluciones validas."""
     limite = base.nivel_limite(nivel)
-    pool = [r for r in RONDAS if r[3] <= limite]
+    datos = base.contenido("globos")
+    definiciones = datos.get("rondas", [])
+    segundos = int(datos.get("segundos", 12))
+    pool = [r for r in definiciones if r.get("d", 1) <= limite]
     elegidos = base.tomar(azar, pool, cantidad)
     salida = []
-    for i, (instruccion, globos, porque, _d) in enumerate(elegidos):
+    for i, ronda in enumerate(elegidos):
+        globos = ronda["globos"]
         salida.append({
             "id": f"b{i}",
-            "instruccion": instruccion,
-            "globos": [{"id": f"g{i}-{k}", "tex": tex}
-                       for k, (tex, _cumple) in enumerate(globos)],
-            "correctos": [f"g{i}-{k}" for k, (_tex, cumple) in enumerate(globos) if cumple],
-            "porque": porque,
-            "segundos": 12,
+            "instruccion": ronda["instruccion"],
+            "globos": [{"id": f"g{i}-{k}", "tex": g["tex"]}
+                       for k, g in enumerate(globos)],
+            "correctos": [f"g{i}-{k}" for k, g in enumerate(globos) if g["cumple"]],
+            "porque": ronda["porque"],
+            "segundos": segundos,
         })
     return salida
 
 
 def publico(ronda: dict) -> dict:
+    """Sin `correctos`: se manda solo el texto de cada globo."""
     return {
         "id": ronda["id"],
         "instruccion": ronda["instruccion"],
@@ -99,6 +74,8 @@ def califica(ronda: dict, respuesta) -> dict:
     falsos = len(explotados - correctos)
     perdidos = len(correctos - explotados)
     total = len(correctos)
+    # Puntaje combinado: que lo explotado sea bueno (precision) y que no
+    # falte ninguno (recall).
     precision = aciertos / len(explotados) if explotados else 0.0
     recall = aciertos / total if total else 0.0
     valor = 0.55 * precision + 0.45 * recall

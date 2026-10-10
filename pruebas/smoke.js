@@ -118,16 +118,17 @@ async function esperarYBuscar(selector, aguja, ms = 8000) {
 
 async function probarPortada() {
   console.log('portada');
-  await hasta(() => texto().includes('Clasificacion de ED'));
-  const tarjetas = nodos('#app .tarjeta');
-  revisar(tarjetas.length >= 8, `la portada lista los temas (${tarjetas.length} tarjetas)`);
-  revisar(texto().includes('Series de Fourier y EDP'), 'incluye el ultimo tema del catalogo');
-  revisar(texto().includes('Minijuegos'), 'ofrece la entrada a los minijuegos');
+  const hub = await hasta(() => botonConTexto('#app .boton', 'Practicar') !== null);
+  revisar(hub, 'la portada (hub) ofrece entrar a Practicar');
+  revisar(texto().includes('temas con quiz'), 'resume cuantos temas y minijuegos hay');
+  const entrar = botonConTexto('#app .boton', 'Practicar');
+  entrar?.click();
 }
 
 async function probarQuizCompleto() {
   console.log('quiz completo');
-  const tema = botonConTexto('#app .tarjeta', 'ED exactas');
+  await hasta(() => botonConTexto('#app .hub__card', 'ED exactas') !== null, 8000);
+  const tema = botonConTexto('#app .hub__card', 'ED exactas');
   if (!revisar(tema !== null, 'se encuentra la tarjeta del tema ED exactas')) return;
   tema.click();
   const empezar = await esperarYBuscar('#app .boton', 'Empezar');
@@ -135,16 +136,16 @@ async function probarQuizCompleto() {
   revisar(texto().includes('ED exactas'), 'la configuracion muestra el tema elegido');
   empezar.click();
 
-  const ok = await hasta(() => nodos('#app .opcion').length >= 2, 8000);
+  const ok = await hasta(() => nodos('#app .quizshow__opcion').length >= 2, 8000);
   if (!revisar(ok, 'el quiz muestra la pregunta con sus opciones')) return;
-  revisar(nodos('#app .opcion').length === 4, 'la pregunta llega con 4 opciones');
+  revisar(nodos('#app .quizshow__opcion').length === 4, 'la pregunta llega con 4 opciones');
   revisar(texto().includes('1/'), 'el marcador avanza con la posicion de la pregunta');
 
   let vueltas = 0;
   while (vueltas < 12 && !document.querySelector('.cifra')) {
     const explicacion = document.querySelector('#app .explica');
     if (!explicacion) {
-      const opciones = nodos('#app .opcion');
+      const opciones = nodos('#app .quizshow__opcion');
       if (!opciones.length) break;
       opciones[0].click();
       const respondida = await hasta(() => document.querySelector('#app .explica') !== null, 6000);
@@ -171,17 +172,23 @@ async function probarQuizCompleto() {
   revisar(nodos('#app .detalle__fila').length > 0, 'el detalle trae una fila por pregunta');
 }
 
-async function probarJuegos() {
-  console.log('catalogo de minijuegos');
-  location.hash = '#/juegos';
-  const ok = await hasta(() => nodos('#app .tarjeta').length >= 10, 8000);
-  revisar(ok, `el catalogo lista los 10 juegos (${nodos('#app .tarjeta').length})`);
+async function probarCatalogo() {
+  console.log('catalogo Practicar');
+  // Practicar vive en #/juegos (la portada solo tiene el boton de entrada).
+  if (location.hash !== '#/juegos') location.hash = '#/juegos';
+  const ok = await hasta(() => nodos('#app .hub__card').length >= 18, 8000);
+  revisar(ok, `el catalogo lista ${nodos('#app .hub__card').length} tarjetas (8 quiz + 10 juegos)`);
+  revisar(texto().includes('ED exactas'), 'incluye los temas del quiz');
+  revisar(texto().includes('Series de Fourier y EDP'), 'incluye el ultimo tema del catalogo');
   revisar(texto().includes('Clasificador Rapido'), 'incluye el clasificador');
   revisar(texto().includes('Tiro al Blanco Teorico'), 'incluye el tiro al blanco');
 }
 
 async function probarJuegoConBoton(id, titulo, selectorOpcion, etiquetaExito) {
-  const tarjeta = botonConTexto('#app .tarjeta', titulo);
+  console.log('minijuego con boton Comprobar');
+  location.hash = '#/juegos';
+  await hasta(() => botonConTexto('#app .hub__card', titulo) !== null, 8000);
+  const tarjeta = botonConTexto('#app .hub__card', titulo);
   if (!revisar(tarjeta !== null, `${id}: se encuentra la tarjeta`)) return;
   tarjeta.click();
 
@@ -205,8 +212,8 @@ async function probarJuegoConBoton(id, titulo, selectorOpcion, etiquetaExito) {
 async function probarMemoria() {
   console.log('minijuego con auto-envio');
   location.hash = '#/juegos';
-  await hasta(() => botonConTexto('#app .tarjeta', 'Memorama') !== null, 8000);
-  const tarjeta = botonConTexto('#app .tarjeta', 'Memorama de Conceptos');
+  await hasta(() => botonConTexto('#app .hub__card', 'Memorama') !== null, 8000);
+  const tarjeta = botonConTexto('#app .hub__card', 'Memorama de Conceptos');
   if (!revisar(tarjeta !== null, 'memoria: se encuentra la tarjeta')) return;
   tarjeta.click();
   const jugar = await esperarYBuscar('#app .boton', 'Jugar');
@@ -354,17 +361,17 @@ async function main() {
     await import(pathToFileURL(join(raiz, 'webapp/js/app.js')).href);
     estado = (await import(pathToFileURL(join(raiz, 'webapp/js/estado.js')).href)).estado;
 
-    const arranco = await hasta(() => texto().includes('Clasificacion de ED'), 10000);
+    const arranco = await hasta(() => texto().includes('Practicar'), 10000);
     if (!arranco) {
       console.log(`    app vacio: ${nodos('#app > *').length} hijos`);
       console.log(`    subtitulo: ${document.getElementById('subtitulo')?.textContent}`);
       console.log(`    cuerpo: ${texto().slice(0, 300)}`);
     }
-    if (!revisar(arranco, 'el modulo app.js monta la portada')) return;
+    if (!revisar(arranco, 'el modulo app.js monta la portada (hub)')) return;
 
     await probarPortada();
+    await probarCatalogo();
     await probarQuizCompleto();
-    await probarJuegos();
     await probarJuegoConBoton('completar', 'Completa la Forma Estandar',
       '.completar__opcion', 'con opcion elegida');
     await probarMemoria();

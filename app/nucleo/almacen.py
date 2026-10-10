@@ -1,6 +1,6 @@
 """almacen.py — Lectura de archivos JSON con cache que se invalida sola.
 
-Sirve para `data/config/materias.json` y `data/quizzes/*.json`: puedes
+Sirve para `data/minijuegos/*.json` y `data/minijuegos/quiz/*.json`: puedes
 editarlos mientras la app esta corriendo y se recarga sola (compara la
 fecha de modificacion, no el contenido).
 """

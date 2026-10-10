@@ -1,9 +1,9 @@
 """banco.py — Catalogo de materias, temas y preguntas.
 
-De donde sale la informacion:
+De donde sale la informacion (todo junto en data/minijuegos/quiz/):
 
-    data/config/materias.json   -> materias y temas (puedes inventar/borra temas)
-    data/quizzes/<tema>.json     -> preguntas de ese tema
+    data/minijuegos/quiz/materias.json              -> materias y temas
+    data/minijuegos/quiz/quiz_tema_<tema>.json      -> preguntas de ese tema
 
 Formato de una pregunta (los campos extra son opcionales):
 
@@ -19,8 +19,8 @@ Un tema sin archivo de preguntas aparece en el catalogo marcado como
 `disponible: false` y la app lo avisa en vez de fallar.
 """
 
-from ..nucleo import config
-from ..nucleo.almacen import leer_carpeta_json, leer_json
+from ...nucleo import config
+from ...nucleo.almacen import leer_carpeta_json, leer_json
 
 _CLAVES = ("p", "f", "opciones", "correcta")
 
@@ -62,7 +62,13 @@ def _leer_quizzes() -> dict:
         preguntas = [limpia for limpia in (_limpiar_pregunta(q) for q in items) if limpia]
         if not preguntas:
             continue
-        tema = str(datos.get("tema", "") or nombre[:-5]).strip()
+        # El tema sale del campo "tema" del JSON; si falta, del nombre del
+        # archivo quitando el prefijo "quiz_tema_" (p. ej. quiz_tema_exactas).
+        tema = str(datos.get("tema") or "").strip()
+        if not tema:
+            base = nombre[:-5] if nombre.lower().endswith(".json") else nombre
+            tema = base[len("quiz_tema_"):] if base.startswith("quiz_tema_") else base
+            tema = tema.strip()
         if not tema:
             continue
         indice[tema] = {

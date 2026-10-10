@@ -7,29 +7,31 @@ propia identidad de Telegram, así que sus marcas y su historial quedan
 separados sin códigos ni cuentas.
 
 La versión anterior del chatbot (Análisis Numérico, sesiones tipo Kahoot) sigue
-intacta en `demo/`.
+intacta en `extras/demo/`.
 
 ## Arrancar
 
 ```powershell
-.\run.ps1                      # app + túnel + bot (basta con esto)
+.\lanzamiento\run.ps1          # app + túnel + bot (basta con esto)
 ```
 
 > Si Windows dice que el script "no está verificado" o no te deja correrlo,
 > es el ExecutionPolicy: ya quedó en `RemoteSigned` para tu usuario, y además
-> tienes `run.bat` (doble clic) que hace lo mismo sin pedir nada.
+> tienes `lanzamiento\run.bat` (doble clic) que hace lo mismo sin pedir nada.
 
-El token del bot ya **no** vive en `run.ps1`: se toma de `token.local.ps1`
-(ignorado por git), de `$env:BOT_TOKEN` o del parámetro `-BotToken`. Basta con
-crear `token.local.ps1` con una línea: `$TOKEN_FIJO = "123456:AAABBB..."`.
+El token del bot ya **no** vive en `run.ps1`: se toma de
+`lanzamiento\token.local.ps1` (ignorado por git), de `$env:BOT_TOKEN` o del
+parámetro `-BotToken`. Basta con crear
+`lanzamiento\token.local.ps1` con una línea: `$TOKEN_FIJO = "123456:AAABBB..."`.
 El modo de pruebas en navegador viene **encendido por defecto**: en Telegram
 se valida tu identidad real y en el navegador entras como Invitado para probar
-los juegos. Solo con `.\run.ps1 -ExigirIdentidad` se apaga ese modo.
+los juegos. Solo con `.\lanzamiento\run.ps1 -ExigirIdentidad` se apaga ese modo.
 
 Por defecto el túnel es **Cloudflare Tunnel** (`cloudflared`), que da una URL
 HTTPS **sin pantalla de aviso**, ideal para Telegram. La primera vez se
-descarga solo (una sola vez) a `cloudflared.exe`. Si prefieres ngrok:
-`.\run.ps1 -Tunel ngrok`. Para probar solo en el navegador: `.\run.ps1 -SinTunel`.
+descarga solo (una sola vez) a `lanzamiento\cloudflared.exe`. Si prefieres
+ngrok: `.\lanzamiento\run.ps1 -Tunel ngrok`. Para probar solo en el navegador:
+`.\lanzamiento\run.ps1 -SinTunel`.
 
 La Mini App carga **todo desde el mismo servidor** (carpeta `webapp/vendor/`):
 ya no depende de CDN externos, así que abre igual en el navegador, en la red
@@ -41,15 +43,17 @@ muestra un aviso con botón **Reintentar** en vez de quedarse cargando.
 
 | Ruta | Contenido |
 |---|---|
+| `lanzamiento/` | Arranque: `run.ps1`, `run.bat`, `main.py`, `bot.py` y el token local. |
 | `app/nucleo/` | Servidor HTTP, autenticación de Telegram, configuración y almacenamiento. |
-| `app/quiz/` | Intentos de quiz, calificación, reportes y récords. |
 | `app/minijuegos/` | Los diez minijuegos y sus contratos (`rondas`, `publico`, `califica`). |
+| `app/minijuegos/quiz/` | Intentos de quiz, calificación, reportes y récords. |
 | `webapp/` | La aplicación: vistas, motor de juegos y CSS. |
-| `data/config/materias.json` | Materia, temas y resúmenes. |
-| `data/quizzes/` | Un banco por tema: 12 preguntas con explicación cada una. |
+| `data/minijuegos/*.json` | Contenido de cada minijuego (un archivo por juego). |
+| `data/minijuegos/quiz/` | `materias.json` y un `quiz_tema_*.json` por tema (12 preguntas c/u). |
 | `data/resultados/` | Reportes y marcas por usuario (se crea sola). |
 | `pruebas/` | Pruebas de API (Python) y de interfaz (Node). |
-| `demo/` | La app anterior, sin tocar. |
+| `docs/` | Documentación del proyecto (contexto en `00_sesion.md`; estructura en `14_estructura_y_contenido.md`). |
+| `extras/` | La app anterior (`demo/`), PDF y capturas de trabajo (no se sube). |
 
 ## Los diez minijuegos
 
@@ -100,8 +104,8 @@ permanente conviene un servidor externo.
 
 ### Desplegar en Render (plan free)
 
-`main.py` levanta en **un solo proceso** el servidor de la Mini App y el bot;
-en Render la URL pública se toma sola de `RENDER_EXTERNAL_URL`.
+`lanzamiento/main.py` levanta en **un solo proceso** el servidor de la Mini App
+y el bot; en Render la URL pública se toma sola de `RENDER_EXTERNAL_URL`.
 
 1. Sube el repo a GitHub (abajo; el token **no** se incluye).
 2. En https://render.com: **New + Blueprint**, conecta el repositorio y aplica
@@ -126,11 +130,13 @@ git remote add origin https://github.com/<usuario>/<repo>.git
 git push -u origin main
 ```
 
-`token.local.ps1`, `cloudflared.exe`, `node_modules/`, los logs y `backup/`
-están en `.gitignore`: no se suben.
+`lanzamiento/token.local.ps1`, `lanzamiento/cloudflared.exe`, `node_modules/`,
+`logs/`, `extras/` y `backup/` están en `.gitignore`: no se suben.
 
-## Documentación del proyecto anterior
+## Documentación del proyecto
 
-Los documentos `01_` a `12_` explican el contexto de la propuesta original
-(mini apps, seguridad de `initData`, comparación de bots, presentación). Siguen
-vigentes como material de referencia.
+En `docs/` viven los documentos `01_` a `11_` (contexto de la propuesta
+original, seguridad de `initData`, comparación de bots, presentación),
+`00_sesion.md` (bitácora y contexto del trabajo por sesiones) y
+`14_estructura_y_contenido.md` (estructura final y formato de los bancos de
+preguntas). Siguen vigentes como material de referencia.

@@ -1,0 +1,189 @@
+{
+  "segundos": 12,
+  "rondas": [
+    {
+      "instruccion": "Explota las funciones que sean soluciones de $y'' + y = 0$",
+      "globos": [
+        {
+          "tex": "\\sin x",
+          "cumple": true
+        },
+        {
+          "tex": "\\cos x",
+          "cumple": true
+        },
+        {
+          "tex": "e^{x}",
+          "cumple": false
+        },
+        {
+          "tex": "x^{2}",
+          "cumple": false
+        }
+      ],
+      "porque": "El polinomio $\\lambda^{2}+1=0$ tiene raices $\\pm i$: las soluciones son combinaciones de $\\sin x$ y $\\cos x$.",
+      "d": 1
+    },
+    {
+      "instruccion": "Explota las funciones que sean soluciones de $y' = y$",
+      "globos": [
+        {
+          "tex": "e^{x}",
+          "cumple": true
+        },
+        {
+          "tex": "x",
+          "cumple": false
+        },
+        {
+          "tex": "\\sin x",
+          "cumple": false
+        },
+        {
+          "tex": "x^{2}",
+          "cumple": false
+        }
+      ],
+      "porque": "Para $y'=y$ la unica familia de soluciones es $Ce^{x}$.",
+      "d": 1
+    },
+    {
+      "instruccion": "Explota las funciones que sean soluciones de $y' = 0$",
+      "globos": [
+        {
+          "tex": "5",
+          "cumple": true
+        },
+        {
+          "tex": "-3",
+          "cumple": true
+        },
+        {
+          "tex": "x",
+          "cumple": false
+        },
+        {
+          "tex": "x^{2}",
+          "cumple": false
+        }
+      ],
+      "porque": "$y'=0$ significa pendiente cero: las soluciones son constantes $y = C$.",
+      "d": 1
+    },
+    {
+      "instruccion": "Explota las funciones que sean soluciones de $y'' - 2y' + y = 0$",
+      "globos": [
+        {
+          "tex": "x\\,e^{x}",
+          "cumple": true
+        },
+        {
+          "tex": "e^{x}",
+          "cumple": true
+        },
+        {
+          "tex": "e^{2x}",
+          "cumple": false
+        },
+        {
+          "tex": "x",
+          "cumple": false
+        }
+      ],
+      "porque": "Raiz doble $\\lambda = 1$: las soluciones son $(C_1 + C_2x)e^{x}$.",
+      "d": 2
+    },
+    {
+      "instruccion": "Explota las funciones que sean soluciones de $y'' + 4y = 0$",
+      "globos": [
+        {
+          "tex": "\\sin 2x",
+          "cumple": true
+        },
+        {
+          "tex": "\\cos 2x",
+          "cumple": true
+        },
+        {
+          "tex": "e^{x}",
+          "cumple": false
+        },
+        {
+          "tex": "x",
+          "cumple": false
+        }
+      ],
+      "porque": "$\\lambda^{2}+4=0$ da $\\lambda = \\pm 2i$: aparecen $\\sin 2x$ y $\\cos 2x$.",
+      "d": 2
+    },
+    {
+      "instruccion": "Explota las funciones que sean soluciones de $y' = \\cos x$",
+      "globos": [
+        {
+          "tex": "\\sin x",
+          "cumple": true
+        },
+        {
+          "tex": "-\\cos x",
+          "cumple": false
+        },
+        {
+          "tex": "\\cos x",
+          "cumple": false
+        },
+        {
+          "tex": "x",
+          "cumple": false
+        }
+      ],
+      "porque": "Hay que derivar cada globo y ver cual da exactamente $\\cos x$.",
+      "d": 2
+    },
+    {
+      "instruccion": "Explota las funciones que sean soluciones de $y'' + y' = 0$",
+      "globos": [
+        {
+          "tex": "1",
+          "cumple": true
+        },
+        {
+          "tex": "e^{-x}",
+          "cumple": true
+        },
+        {
+          "tex": "x",
+          "cumple": false
+        },
+        {
+          "tex": "e^{x}",
+          "cumple": false
+        }
+      ],
+      "porque": "$\\lambda(\\lambda + 1) = 0$: raices 0 y -1, o sea $C_1 + C_2 e^{-x}$.",
+      "d": 3
+    },
+    {
+      "instruccion": "Explota las funciones que sean soluciones de $y'' = 0$",
+      "globos": [
+        {
+          "tex": "3x + 2",
+          "cumple": true
+        },
+        {
+          "tex": "x^{2}",
+          "cumple": false
+        },
+        {
+          "tex": "e^{x}",
+          "cumple": false
+        },
+        {
+          "tex": "\\sin x",
+          "cumple": false
+        }
+      ],
+      "porque": "$y''=0$ integrated da rectas $y = ax + b$.",
+      "d": 3
+    }
+  ]
+}

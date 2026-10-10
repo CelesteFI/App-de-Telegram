@@ -17,14 +17,15 @@ from .http import construir_servidor
 
 
 def _cargar_modulos() -> None:
-    """Importa quiz y minijuegos para que se registren sus rutas."""
-    from .. import minijuegos, quiz  # noqa: F401
+    """Importa los minijuegos y el quiz para que se registren sus rutas."""
+    from .. import minijuegos  # noqa: F401
+    from ..minijuegos import quiz  # noqa: F401
 
 
 def comprobar() -> int:
     """Valida configuracion, catalogo y contenido de los minijuegos."""
     from ..minijuegos import registro, servicio
-    from ..quiz import banco, servicio as quiz_servicio  # noqa: F401
+    from ..minijuegos.quiz import banco, servicio as quiz_servicio  # noqa: F401
 
     fallos = 0
     print(f"app        : {config.NOMBRE_APP} v{config.VERSION}")
@@ -138,7 +139,7 @@ def main() -> None:
         sys.exit(_chequear_identidad(args.puerto))
 
     from ..minijuegos import registro
-    from ..quiz import banco
+    from ..minijuegos.quiz import banco
 
     try:
         registro.cargar()

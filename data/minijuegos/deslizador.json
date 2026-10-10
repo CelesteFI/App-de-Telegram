@@ -1,0 +1,249 @@
+{
+  "casos": [
+    {
+      "attr": "Es lineal",
+      "tex": "y'' + 3y' + 2y = 0",
+      "valor": true,
+      "d": 1,
+      "porque": "$y$, $y'$ y $y''$ aparecen de primer grado y los coeficientes solo dependen de $x$."
+    },
+    {
+      "attr": "Es lineal",
+      "tex": "y' + x\\,y = e^{x}",
+      "valor": true,
+      "d": 1,
+      "porque": "Tiene la forma $y' + P(x)y = f(x)$, que es lineal de primer orden."
+    },
+    {
+      "attr": "Es lineal",
+      "tex": "y' + y\\,\\tan y = 0",
+      "valor": false,
+      "d": 1,
+      "porque": "$\\tan y$ depende de la incognita: deja de ser lineal."
+    },
+    {
+      "attr": "Es lineal",
+      "tex": "y'' + 3y\\,y' = 0",
+      "valor": false,
+      "d": 1,
+      "porque": "El producto $y\\,y'$ es un termino no lineal (quintico grado si se desarrolla)."
+    },
+    {
+      "attr": "Es lineal",
+      "tex": "y' + y = y\\sin x",
+      "valor": true,
+      "d": 2,
+      "porque": "Reordenando: $y' + (1 - \\sin x)y = 0$. Es lineal (y el producto $y\\sin x$ no la rompe: $y$ sale factor)."
+    },
+    {
+      "attr": "Es lineal",
+      "tex": "\\dfrac{\\partial u}{\\partial t} = \\alpha\\, \\dfrac{\\partial^2 u}{\\partial x^2}",
+      "valor": true,
+      "d": 2,
+      "porque": "Es lineal en $u$ y sus derivadas: es una EDP lineal."
+    },
+    {
+      "attr": "Es lineal de primer orden",
+      "tex": "y'' - x y = 0",
+      "valor": false,
+      "d": 2,
+      "porque": "Lineal, si, pero de SEGUNDO orden."
+    },
+    {
+      "attr": "Es lineal",
+      "tex": "y' = \\dfrac{x}{y}",
+      "valor": false,
+      "d": 2,
+      "porque": "La incognita aparece en el denominador: no se puede escribir $y' + P(x)y = f(x)$."
+    },
+    {
+      "attr": "Es lineal homogenea",
+      "tex": "y' + 4y = 0",
+      "valor": true,
+      "d": 1,
+      "porque": "El segundo miembro es 0: es la ED homogenea."
+    },
+    {
+      "attr": "Es lineal homogenea",
+      "tex": "y' - 2y = t",
+      "valor": false,
+      "d": 1,
+      "porque": "El segundo miembro $t$ no es cero: es NO homogenea."
+    },
+    {
+      "attr": "Es lineal homogenea",
+      "tex": "y' + y = x",
+      "valor": false,
+      "d": 2,
+      "porque": "Lineal, pero con $f(x) = x \\neq 0$."
+    },
+    {
+      "attr": "Es homogenea de tipo no lineal",
+      "tex": "\\dfrac{dy}{dx} = \\dfrac{x^2 + y^2}{xy}",
+      "valor": true,
+      "d": 2,
+      "porque": "El lado derecho es funcion solo de $y/x$: es $F(y/x)$, la forma homogenea clasica (NO es 'lineal homogenea')."
+    },
+    {
+      "attr": "Es lineal homogenea",
+      "tex": "y' = 1 + \\dfrac{y}{x}",
+      "valor": false,
+      "d": 3,
+      "porque": "Es homogenea en el sentido no lineal ($F(y/x)$), pero no es lineal."
+    },
+    {
+      "attr": "Es separable",
+      "tex": "\\dfrac{dy}{dx} = x^2 y",
+      "valor": true,
+      "d": 1,
+      "porque": "$y' = f(x)g(y)$ con $f(x)=x^2$ y $g(y)=y$: se separa."
+    },
+    {
+      "attr": "Es separable",
+      "tex": "\\dfrac{dy}{dx} = x + y",
+      "valor": false,
+      "d": 1,
+      "porque": "No se puede escribir como producto $f(x)g(y)$: es lineal de primer orden."
+    },
+    {
+      "attr": "Es separable",
+      "tex": "\\dfrac{dy}{dx} = \\dfrac{1+y^2}{e^{x}}",
+      "valor": true,
+      "d": 3,
+      "porque": "$\\dfrac{dy}{dx} = e^{-x}(1+y^2)$: producto de funcion de $x$ por funcion de $y$."
+    },
+    {
+      "attr": "Es separable",
+      "tex": "\\dfrac{dy}{dx} = \\dfrac{y}{1 + x}",
+      "valor": true,
+      "d": 2,
+      "porque": "$y' = \\dfrac{1}{1+x}\\,y$, producto de $f(x)$ y $g(y)$."
+    },
+    {
+      "attr": "Es exacta",
+      "tex": "y\\,dx + x\\,dy = 0",
+      "valor": true,
+      "d": 2,
+      "porque": "$\\partial M/\\partial y = 1 = \\partial N/\\partial x$; ademas $M dx + N dy = d(xy)$."
+    },
+    {
+      "attr": "Es exacta",
+      "tex": "-y\\,dx + x\\,dy = 0",
+      "valor": false,
+      "d": 2,
+      "porque": "$\\partial M/\\partial y = -1 \\neq 1 = \\partial N/\\partial x$."
+    },
+    {
+      "attr": "Es exacta",
+      "tex": "(1+y^2)\\,dx + 2xy\\,dy = 0",
+      "valor": true,
+      "d": 2,
+      "porque": "Ambas derivadas parciales valen $2y$."
+    },
+    {
+      "attr": "Es autonoma",
+      "tex": "y' = y^2 - 1",
+      "valor": true,
+      "d": 1,
+      "porque": "La $x$ no aparece: la evolucion depende solo de $y$."
+    },
+    {
+      "attr": "Es autonoma",
+      "tex": "y' = x\\,y",
+      "valor": false,
+      "d": 1,
+      "porque": "Aparece $x$ de forma explicita."
+    },
+    {
+      "attr": "Es autonoma",
+      "tex": "y' = -y + 3",
+      "valor": true,
+      "d": 2,
+      "porque": "Autonoma (no aparece $x$) aunque no sea homogenea."
+    },
+    {
+      "attr": "Es de segundo orden",
+      "tex": "y'' + y' + y = 0",
+      "valor": true,
+      "d": 1,
+      "porque": "La mayor derivada es $y''$."
+    },
+    {
+      "attr": "Es de segundo orden",
+      "tex": "(y')^2 + x = 0",
+      "valor": false,
+      "d": 2,
+      "porque": "Aunque $(y')^2$ parezca de segundo grado, la mayor derivada es $y'$: es de PRIMER orden, y ademas no lineal por el cuadrado."
+    },
+    {
+      "attr": "Es de tercer orden",
+      "tex": "y^{(4)} + y = 0",
+      "valor": false,
+      "d": 2,
+      "porque": "Es de cuarto orden."
+    },
+    {
+      "attr": "Es de primer orden",
+      "tex": "y''' - y = x",
+      "valor": false,
+      "d": 1,
+      "porque": "Es de tercer orden."
+    },
+    {
+      "attr": "Es de tipo Bernoulli",
+      "tex": "y' + y = x\\,y^{2}",
+      "valor": true,
+      "d": 1,
+      "porque": "Forma $y' + P(x)y = Q(x)y^{n}$ con $n = 2$."
+    },
+    {
+      "attr": "Es de tipo Bernoulli",
+      "tex": "y' + y\\ln y = 0",
+      "valor": false,
+      "d": 3,
+      "porque": "El termino $y\\ln y$ no es $Q(x)y^{n}$: es una no lineal (aunque se resuelve separando)."
+    },
+    {
+      "attr": "Es de tipo Riccati",
+      "tex": "y' = y^2 + y + x",
+      "valor": true,
+      "d": 2,
+      "porque": "$y' = a(x)y^2 + b(x)y + c(x)$ es exactamente Riccati."
+    },
+    {
+      "attr": "Es de tipo Riccati",
+      "tex": "y' = y^3 + y",
+      "valor": false,
+      "d": 2,
+      "porque": "El grado en $y$ es 3, no 2: no es Riccati."
+    },
+    {
+      "attr": "Es una ecuacion en derivadas parciales",
+      "tex": "\\dfrac{\\partial u}{\\partial t} = \\alpha\\,\\dfrac{\\partial^2 u}{\\partial x^2}",
+      "valor": true,
+      "d": 1,
+      "porque": "Aparecen derivadas parciales respecto a dos variables distintas."
+    },
+    {
+      "attr": "Es una ecuacion en derivadas parciales",
+      "tex": "\\dfrac{dy}{dx} = y",
+      "valor": false,
+      "d": 1,
+      "porque": "Solo hay derivadas ordinarias: es una EDO."
+    },
+    {
+      "attr": "Es una ED lineal de primer orden",
+      "tex": "x^2 y' + x y = 0",
+      "valor": true,
+      "d": 2,
+      "porque": "Al dividir entre $x^2$: $y' + \\dfrac{1}{x}y = 0$, lineal de primer orden."
+    },
+    {
+      "attr": "Es una ED lineal de primer orden",
+      "tex": "\\cos y\\, y' + x = 0",
+      "valor": false,
+      "d": 3,
+      "porque": "$\\cos y$ depende de la incognita: no es lineal."
+    }
+  ]
+}

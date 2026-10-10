@@ -1,0 +1,77 @@
+{
+  "letras_trampa": "ZQJXKW",
+  "casos": [
+    {
+      "pista": "Tipo de solucion de una ED que se obtiene al asignar valores especificos a las constantes de la solucion general.",
+      "palabra": "PARTICULAR",
+      "porque": "La solucion particular es una solucion concreta de la familia general.",
+      "d": 1
+    },
+    {
+      "pista": "Ecuacion diferencial en la que $M\\,dx + N\\,dy$ es la diferencial total de una funcion de $x$ e $y$.",
+      "palabra": "EXACTA",
+      "porque": "La condición es $\\partial M/\\partial y = \\partial N/\\partial x$.",
+      "d": 1
+    },
+    {
+      "pista": "Raíces del polinomio característico que dan la solución complementaria de una ED lineal de segundo orden.",
+      "palabra": "RAICES",
+      "porque": "Raices reales repetidas, reales distintas o complejas conjugadas.",
+      "d": 1
+    },
+    {
+      "pista": "Transformada integral que convierte un problema con condición inicial en una ecuación algebraica.",
+      "palabra": "LAPLACE",
+      "porque": "Su inversa recupera la función original.",
+      "d": 1
+    },
+    {
+      "pista": "ED de primer orden $y' + P(x)y = Q(x)y^{n}$ que se resuelve con $y = v^{1-n}$.",
+      "palabra": "BERNOULLI",
+      "porque": "Si $n = 1$ degenera en una ED lineal.",
+      "d": 1
+    },
+    {
+      "pista": "ED de primer orden $y' = a(x)y^{2} + b(x)y + c(x)$; con una solución conocida se reduce a lineal.",
+      "palabra": "RICCATI",
+      "porque": "Único caso no lineal de primer orden reducible a lineal.",
+      "d": 2
+    },
+    {
+      "pista": "Propiedad de una ED separable; aquí $y' = f(x)g(y)$.",
+      "palabra": "SEPARABLE",
+      "porque": "Se separan las variables y se integra cada lado.",
+      "d": 2
+    },
+    {
+      "pista": "ED cuyo lado derecho $g(y)$ no contiene $x$ de forma explícita.",
+      "palabra": "AUTONOMA",
+      "porque": "La evolucion depende solo del valor actual de $y$.",
+      "d": 2
+    },
+    {
+      "pista": "Propiedad que garantiza que el problema con dato inicial tenga una única solución.",
+      "palabra": "UNICIDAD",
+      "porque": "Se asegura con hipótesis de Lipschitz o con $\\partial f/\\partial y$ continua.",
+      "d": 3
+    },
+    {
+      "pista": "Fenómeno que garantiza que exista al menos una solución del problema con dato inicial.",
+      "palabra": "EXISTENCIA",
+      "porque": "Es la otra mitad del teorema de existencia y unicidad.",
+      "d": 3
+    },
+    {
+      "pista": "Solución de una ED que incluye la constante de integración sin conocer el dato inicial.",
+      "palabra": "GENERAL",
+      "porque": "La solución particular es la general con la constante ya determinada.",
+      "d": 3
+    },
+    {
+      "pista": "Parte de la solución total que corresponde a la ED lineal homogénea asociada.",
+      "palabra": "HOMOGENEA",
+      "porque": "Se le llama también solución complementaria: la que no ve el término no homogéneo.",
+      "d": 3
+    }
+  ]
+}

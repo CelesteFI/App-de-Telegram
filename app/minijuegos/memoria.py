@@ -5,10 +5,15 @@ un concepto teorico con su contraparte matematica (o al reves).
 
 El servidor reparte las cartas mezcladas y se guarda cual es la pareja de
 cada una. El navegador solo ve el texto de las cartas, nunca el emparejamiento.
+
+CONTENIDO: `data/minijuegos/memoria.json` con:
+  - "pares": [{"concepto","mate","d"}], una pareja por elemento.
+  - "cantidad_por_nivel": {"facil": n, "medio": n, "dificil": n}.
 """
 
 from . import base
 
+# Metadatos del juego (que muestra el menu).
 JUEGO = {
     "id": "memoria",
     "titulo": "Memorama de Conceptos",
@@ -19,30 +24,15 @@ JUEGO = {
     "etiquetas": ["conceptos", "memoria"],
 }
 
-PARES = [
-    {"concepto": "EDO lineal de primer orden", "mate": r"y' + P(x)\,y = f(x)", "d": 1},
-    {"concepto": "Ecuacion exacta", "mate": r"M\,dx + N\,dy = 0 \;\text{ con }\; \partial M/\partial y = \partial N/\partial x", "d": 1},
-    {"concepto": "Factor integrante", "mate": r"\mu(x) = e^{\int P(x)\,dx}", "d": 1},
-    {"concepto": "Forma separable", "mate": r"\dfrac{dy}{dx} = f(x)\,g(y)", "d": 1},
-    {"concepto": "ED homogenea (no lineal)", "mate": r"\dfrac{dy}{dx} = F\!\left(\dfrac{y}{x}\right)", "d": 2},
-    {"concepto": "Ecuacion de Bernoulli", "mate": r"y' + P(x)\,y = Q(x)\,y^{n}", "d": 1},
-    {"concepto": "Ecuacion de Riccati", "mate": r"y' = a(x)y^{2} + b(x)y + c(x)", "d": 2},
-    {"concepto": "Polinomio caracteristico", "mate": r"\lambda^{2} + a_{1}\lambda + a_{0} = 0", "d": 1},
-    {"concepto": "ED parcial del calor (difusion)", "mate": r"\dfrac{\partial u}{\partial t} = \alpha\,\dfrac{\partial^{2}u}{\partial x^{2}}", "d": 2},
-    {"concepto": "Autonoma", "mate": r"\dfrac{dy}{dx} = g(y) \quad (\text{sin } x \text{ expli\u0301cita})", "d": 2},
-    {"concepto": "Orden de la ED", "mate": r"\text{grado de la derivada m\u00e1s alta presente}", "d": 1},
-    {"concepto": "ED de Euler (Cauchy)", "mate": r"x^{2}y'' + a\,x\,y' + b\,y = 0", "d": 3},
-    {"concepto": "Coeficiente de un sistema lineal", "mate": r"m = \det(A - \lambda I)", "d": 3},
-    {"concepto": "Existencia y unicidad", "mate": r"|g'(x)| < 1 \quad \text{cerca de la ra\u00edz (punto fijo)}", "d": 3},
-]
-
-CANTIDAD_DE_PARES = {"facil": 4, "medio": 5, "dificil": 6}
-
 
 def rondas(azar, nivel: str, cantidad: int, tema=None) -> list[dict]:
+    """Reparte `cantidad` tableros de `cuantos` parejas, cartas ya mezcladas."""
     limite = base.nivel_limite(nivel)
-    pool = [p for p in PARES if p["d"] <= limite]
-    cuantos = min(CANTIDAD_DE_PARES[base.normalizar_nivel(nivel)], len(pool))
+    datos = base.contenido("memoria")
+    pares = datos.get("pares", [])
+    cantidades = datos.get("cantidad_por_nivel", {})
+    pool = [p for p in pares if p.get("d", 1) <= limite]
+    cuantos = min(int(cantidades.get(base.normalizar_nivel(nivel), 4)), len(pool))
     salida = []
     for i in range(cantidad):
         elegidos = base.tomar(azar, pool, cuantos)
@@ -65,6 +55,7 @@ def rondas(azar, nivel: str, cantidad: int, tema=None) -> list[dict]:
 
 
 def publico(ronda: dict) -> dict:
+    """Sin `solucion`: el emparejamiento se queda en el servidor."""
     return {"id": ronda["id"], "cartas": ronda["cartas"], "pares": ronda["pares"]}
 
 
@@ -89,6 +80,7 @@ def califica(ronda: dict, respuesta) -> dict:
             "puntaje": 0,
             "detalle": f"Te faltaron {faltan} pareja(s). El tablero se acaba: hay que unir todas.",
         }
+    # Cada error de memoria cuesta 15 puntos (con tope, para no llegar a 0).
     castigo = 15 * min(errores, permitidos + 3)
     detalle = f"Las {ronda['pares']} parejas salieron bien"
     detalle += f" con {errores} error(es) de memoria." if errores else " al primer intento."

@@ -1,7 +1,8 @@
 # run.ps1 - Levanta la app (backend + Mini App), abre el tunel y corre el bot
 #
 # Como usarlo (en PowerShell, dentro de "Mejora de telegram"):
-#   .\run.ps1
+#   .\lanzamiento\run.ps1
+#   (o doble clic en lanzamiento\run.bat)
 #
 # El token vive fuera del repo, en "token.local.ps1" (esta en .gitignore), asi
 # que la carpeta se puede subir a GitHub sin filtrar el secreto. Se toma, en
@@ -65,14 +66,22 @@ if ($SinTunel) { $Tunel = "ninguno" }
 $TOKEN_FIJO = ""
 
 # ---------- Rutas ------------------------------------------------------------
-$Root        = $PSScriptRoot
+# Este script vive en "lanzamiento/"; el proyecto es la carpeta de arriba.
+# Todo se resuelve en absoluto desde $Root para que funcione igual sin importar
+# desde donde se invoque (.\lanzamiento\run.ps1 o doble clic en run.bat).
+$LanDir      = $PSScriptRoot
+$Root        = Split-Path -Parent $LanDir
 $Principal   = Join-Path $Root "app\nucleo\principal.py"
-$BotPy       = Join-Path $Root "bot.py"
+$BotPy       = Join-Path $LanDir "bot.py"
 $Ngrok       = "D:\08 Semestre\Servicio Social\ngrok.exe"
-$Cloudflared = Join-Path $Root "cloudflared.exe"
-$PidsFile    = Join-Path $Root ".run-pids.json"
+$Cloudflared = Join-Path $LanDir "cloudflared.exe"
+$PidsFile    = Join-Path $LanDir ".run-pids.json"
+$LogsDir     = Join-Path $Root "logs"
 
 if (-not (Test-Path $Principal)) { throw "No encuentro app\nucleo\principal.py en $Root" }
+if (-not (Test-Path $LogsDir)) { New-Item -ItemType Directory -Path $LogsDir | Out-Null }
+# Los modulos se importan como "app.nucleo.principal": hay que pararse en la raiz.
+Set-Location $Root
 
 $Py = (Get-Command python -ErrorAction Stop).Source
 
@@ -175,8 +184,8 @@ function Abrir-TunelCloudflare {
     param([int]$Puerto)
     $exe = Asegurar-Cloudflared
     if (-not $exe) { return $null }
-    $log = Join-Path $Root "tunel.log"
-    $err = Join-Path $Root "tunel.err.log"
+    $log = Join-Path $LogsDir "tunel.log"
+    $err = Join-Path $LogsDir "tunel.err.log"
     Remove-Item $log, $err -ErrorAction SilentlyContinue
     Write-Host "Abriendo Cloudflare Tunnel..." -ForegroundColor Cyan
     $proc = Start-Process $exe `
@@ -234,8 +243,8 @@ function Abrir-TunelNgrok {
 }
 
 # ---------- 1) Servidor + Mini App ------------------------------------------
-$ServerLog = Join-Path $Root "server.log"
-$ServerErr = Join-Path $Root "server.err.log"
+$ServerLog = Join-Path $LogsDir "server.log"
+$ServerErr = Join-Path $LogsDir "server.err.log"
 
 # El token TIENE que estar en el entorno ANTES de arrancar el servidor: es el
 # que valida la firma (initData) de cada persona que entra desde Telegram.
@@ -250,7 +259,7 @@ if (-not $ExigirIdentidad) {
 }
 Write-Host "Sirviendo app + backend en http://localhost:$Puerto ..." -ForegroundColor Cyan
 $ServerArg = '"-m" "app.nucleo.principal" "--puerto" "' + $Puerto + '"'
-$web = Start-Process $Py -ArgumentList $ServerArg -WindowStyle Hidden -PassThru `
+$web = Start-Process $Py -ArgumentList $ServerArg -WorkingDirectory $Root -WindowStyle Hidden -PassThru `
     -RedirectStandardOutput $ServerLog -RedirectStandardError $ServerErr
 
 Start-Sleep -Seconds 2
@@ -286,7 +295,7 @@ Write-Host "App local OK (http://localhost:$Puerto)." -ForegroundColor Green
 if (-not $SinBot -and -not $SinIdentidad) {
     $chequeo = Start-Process $Py `
         -ArgumentList ('"-m" "app.nucleo.principal" "--puerto" "' + $Puerto + '" "--chequeo-identidad"') `
-        -WindowStyle Hidden -PassThru -Wait `
+        -WorkingDirectory $Root -WindowStyle Hidden -PassThru -Wait `
         -RedirectStandardOutput "$env:TEMP\chequeo_ok.log" -RedirectStandardError "$env:TEMP\chequeo_err.log"
     if (Test-Path "$env:TEMP\chequeo_ok.log") { Get-Content "$env:TEMP\chequeo_ok.log" | ForEach-Object { Write-Host $_ } }
     if ($chequeo.ExitCode -ne 0) {

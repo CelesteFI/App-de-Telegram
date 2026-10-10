@@ -1,0 +1,84 @@
+{
+  "tableros": [
+    [
+      {
+        "izq": "M\\,dx + N\\,dy = 0 \\;\\text{ con }\\; \\partial M/\\partial y = \\partial N/\\partial x",
+        "der": "Integracion directa (ya es exacta)",
+        "porque": "Si la ecuacion es exacta, la solucion es $F(x,y) = C$ integrating $M dx + N dy$ directo.",
+        "d": 1
+      },
+      {
+        "izq": "y' + P(x)\\,y = f(x)",
+        "der": "Factor integrante \\mu(x) = e^{\\int P(x)dx}",
+        "porque": "Es la ED lineal de primer orden: se multiplica por el factor integrante.",
+        "d": 1
+      },
+      {
+        "izq": "\\dfrac{dy}{dx} = f(x)\\,g(y)",
+        "der": "Separar variables e integrar",
+        "porque": "El lado derecho ya es producto: se separa $\\frac{dy}{g(y)} = f(x)dx$.",
+        "d": 1
+      }
+    ],
+    [
+      {
+        "izq": "y' + P(x)\\,y = Q(x)\\,y^{n}",
+        "der": "Sustitucion y = v^{1-n} (Bernoulli)",
+        "porque": "La transformacion $y = v^{1-n}$ convierte la ED en lineal.",
+        "d": 2
+      },
+      {
+        "izq": "\\dfrac{dy}{dx} = F\\!\\left(\\dfrac{y}{x}\\right)",
+        "der": "Sustitucion y = vx (homogenea)",
+        "porque": "Al poner $y = vx$ la ED se separa en $v$ y $x$.",
+        "d": 2
+      },
+      {
+        "izq": "y'' + a_{1}y' + a_{0}y = 0",
+        "der": "Polinomio caracteristico",
+        "porque": "Las raices $\\\\lambda$ del polinomio dan la solucion complementaria.",
+        "d": 1
+      }
+    ],
+    [
+      {
+        "izq": "y' = a(x)y^{2} + b(x)y + c(x)",
+        "der": "Riccati (o reduccion a lineal si se conoce una solucion)",
+        "porque": "Es el unico caso no lineal de primer orden que se reduce a una lineal.",
+        "d": 2
+      },
+      {
+        "izq": "y'' + p(x)y' + q(x)y = f(x)",
+        "der": "Variacion de parametros o reduccion de orden",
+        "porque": "Lineal de segundo orden con coeficientes variables.",
+        "d": 3
+      },
+      {
+        "izq": "\\dfrac{\\partial u}{\\partial t} = \\alpha\\,\\dfrac{\\partial^{2}u}{\\partial x^{2}}",
+        "der": "Separacion de variables (o Fourier)",
+        "porque": "Problema de difusion: se separa $u(x,t) = X(x)T(t)$ o se aplica Fourier.",
+        "d": 2
+      }
+    ],
+    [
+      {
+        "izq": "\\partial M/\\partial y - \\partial N/\\partial x = h(x)",
+        "der": "Factor integrante multiplicando solo por x: \\mu(x) = e^{\\int h(x)dx}",
+        "porque": "Cuando la diferencia depende solo de $x$, el factor integrante es funcion de $x$ y se integra directo.",
+        "d": 3
+      },
+      {
+        "izq": "\\partial M/\\partial y - \\partial N/\\partial x = g(y)",
+        "der": "Factor integrante multiplicando solo por y: \\mu(y) = e^{\\int -g(y)dy}",
+        "porque": "Cuando la diferencia depende solo de $y$, se busca $\\\\mu(y)$.",
+        "d": 3
+      },
+      {
+        "izq": "\\int f(x)\\,dx = x^{2} + C",
+        "der": "Constante de integracion",
+        "porque": "Toda integral indefinida lleva su constante $C$.",
+        "d": 1
+      }
+    ]
+  ]
+}

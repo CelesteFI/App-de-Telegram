@@ -1,0 +1,148 @@
+{
+  "conjuntos": [
+    {
+      "pista": "Tres son lineales homogeneas de primer orden",
+      "tarjetas": [
+        "y' + 3y = 0",
+        "y' - 5y = 0",
+        "y' + x\\,y = 0",
+        "y'' + y = 0"
+      ],
+      "intruso": 3,
+      "porque": "La cuarta es de segundo orden.",
+      "d": 1
+    },
+    {
+      "pista": "Tres son separables",
+      "tarjetas": [
+        "y' = x\\,y",
+        "y' = \\sin y",
+        "y' = x + y",
+        "y' = x\\,y^{2}"
+      ],
+      "intruso": 2,
+      "porque": "$y' = x + y$ no se puede escribir como producto $f(x)g(y)$.",
+      "d": 1
+    },
+    {
+      "pista": "Tres son lineales de primer orden",
+      "tarjetas": [
+        "y' + y = 0",
+        "y' + 2y = x",
+        "y' + y\\tan y = 0",
+        "y' + x\\,y = e^{x}"
+      ],
+      "intruso": 2,
+      "porque": "$\\tan y$ depende de la incognita.",
+      "d": 2
+    },
+    {
+      "pista": "Tres son exactas",
+      "tarjetas": [
+        "y\\,dx + x\\,dy = 0",
+        "(1+y^{2})\\,dx + 2xy\\,dy = 0",
+        "(2xy + e^{x})\\,dx + x^{2}\\,dy = 0",
+        "-y\\,dx + x\\,dy = 0"
+      ],
+      "intruso": 3,
+      "porque": "En la ultima $\\partial M/\\partial y = -1 \\ne 1 = \\partial N/\\partial x$.",
+      "d": 2
+    },
+    {
+      "pista": "Tres son de segundo orden",
+      "tarjetas": [
+        "y'' + y' + y = 0",
+        "y'' - y = x",
+        "y''' - y = 0",
+        "y^{(4)} + y = 0"
+      ],
+      "intruso": 2,
+      "porque": "$y'''$ es de tercer orden.",
+      "d": 1
+    },
+    {
+      "pista": "Tres son homogeneas de tipo no lineal ($y' = F(y/x)$)",
+      "tarjetas": [
+        "y' = \\dfrac{y}{x}",
+        "y' = 1 + \\dfrac{y}{x}",
+        "y' = x + y",
+        "y' = \\dfrac{x^{2} + y^{2}}{xy}"
+      ],
+      "intruso": 2,
+      "porque": "$x$ y $y$ no se pueden agrupar como $F(y/x)$.",
+      "d": 3
+    },
+    {
+      "pista": "Tres son ED parciales",
+      "tarjetas": [
+        "\\partial u/\\partial t = \\alpha\\,\\partial^{2}u/\\partial x^{2}",
+        "\\partial^{2}u/\\partial x^{2} + \\partial^{2}u/\\partial y^{2} = 0",
+        "dy/dx = y",
+        "\\partial u/\\partial t = u"
+      ],
+      "intruso": 2,
+      "porque": "$dy/dx$ son derivadas ordinarias: es una EDO.",
+      "d": 1
+    },
+    {
+      "pista": "Tres son autonomas (no aparece $x$)",
+      "tarjetas": [
+        "y' = y^{2} - 1",
+        "y' = \\sin y",
+        "y' = x\\,y",
+        "y' = -y + 3"
+      ],
+      "intruso": 2,
+      "porque": "$x$ aparece de forma explicita.",
+      "d": 1
+    },
+    {
+      "pista": "Tres son de tipo Bernoulli",
+      "tarjetas": [
+        "y' + y = x\\,y^{2}",
+        "y' + 2y = e^{x}\\,y^{3}",
+        "y' + y\\ln y = 0",
+        "y' + \\frac{1}{x}y = x^{2}\\,y^{4}"
+      ],
+      "intruso": 2,
+      "porque": "$y\\ln y$ no tiene la forma $Q(x)y^{n}$.",
+      "d": 2
+    },
+    {
+      "pista": "Tres son lineales de segundo orden con coeficientes constantes",
+      "tarjetas": [
+        "y'' + 3y' + 2y = 0",
+        "y'' - y = 0",
+        "y'' + p(x)y' + q(x)y = f(x)",
+        "y'' + y' + y = x"
+      ],
+      "intruso": 2,
+      "porque": "Los coeficientes dependen de $x$, no son constantes.",
+      "d": 3
+    },
+    {
+      "pista": "Tres son de tipo Riccati",
+      "tarjetas": [
+        "y' = y^{2} + y + x",
+        "y' = y^{2} - 1",
+        "y' = y^{3} + y",
+        "y' = x\\,y^{2} + x"
+      ],
+      "intruso": 2,
+      "porque": "El grado 3 en $y$ no es Riccati.",
+      "d": 2
+    },
+    {
+      "pista": "Tres son lineales homogeneas (con segundo miembro 0)",
+      "tarjetas": [
+        "y' + 3y = 0",
+        "y' - y = 0",
+        "y' + y = x",
+        "y' + 5y = 0"
+      ],
+      "intruso": 2,
+      "porque": "$x \\ne 0$ como segundo miembro la hace no homogenea.",
+      "d": 1
+    }
+  ]
+}

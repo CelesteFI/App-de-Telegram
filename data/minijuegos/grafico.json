@@ -1,0 +1,104 @@
+{
+  "casos": [
+    {
+      "ecuacion": "\\dfrac{dy}{dx} = 0",
+      "correcto": "todo_horizontal",
+      "distractores": [
+        "circular",
+        "seno"
+      ],
+      "porque": "La derivada es 0 en todo punto: las soluciones son rectas horizontales $y = C$.",
+      "d": 1
+    },
+    {
+      "ecuacion": "\\dfrac{dy}{dx} = y",
+      "correcto": "bandas_y",
+      "distractores": [
+        "todo_horizontal",
+        "verticales_x"
+      ],
+      "porque": "La pendiente depende de $y$: horizontal sobre el eje $x$, positiva arriba y negativa abajo.",
+      "d": 1
+    },
+    {
+      "ecuacion": "\\dfrac{dy}{dx} = -y",
+      "correcto": "bandas_y_neg",
+      "distractores": [
+        "todo_horizontal",
+        "bandas_y"
+      ],
+      "porque": "La pendiente se opone al valor de $y$: hacia abajo por encima del eje y hacia abajo... (hacia el eje) por debajo.",
+      "d": 1
+    },
+    {
+      "ecuacion": "\\dfrac{dy}{dx} = x",
+      "correcto": "verticales_x",
+      "distractores": [
+        "bandas_y",
+        "circulo"
+      ],
+      "porque": "Aqui la pendiente depende de $x$: las flechas son constantes en cada columna vertical.",
+      "d": 2
+    },
+    {
+      "ecuacion": "\\dfrac{dy}{dx} = \\dfrac{-x}{y}",
+      "correcto": "circular",
+      "distractores": [
+        "bandas_y",
+        "verticales_x"
+      ],
+      "porque": "Es la ED de las circunferencias centradas en el origen: $x^2 + y^2 = C$.",
+      "d": 2
+    },
+    {
+      "ecuacion": "\\dfrac{dy}{dx} = \\cos x",
+      "correcto": "seno",
+      "distractores": [
+        "todo_horizontal",
+        "verticales_x"
+      ],
+      "porque": "La pendiente solo depende de $x$ y oscila entre -1 y 1.",
+      "d": 2
+    },
+    {
+      "ecuacion": "\\dfrac{dy}{dx} = 1",
+      "correcto": "constante",
+      "distractores": [
+        "verticales_x",
+        "seno"
+      ],
+      "porque": "Todas las pendientes valen 1: rectas de pendiente 1.",
+      "d": 1
+    },
+    {
+      "ecuacion": "\\dfrac{dy}{dx} = x^{2} - 1",
+      "correcto": "creciente_x",
+      "distractores": [
+        "todo_horizontal",
+        "bandas_y"
+      ],
+      "porque": "La pendiente depende de $x$ y se anula en $x = \\pm 1$.",
+      "d": 3
+    },
+    {
+      "ecuacion": "\\dfrac{dy}{dx} = x + 2y",
+      "correcto": "divergente",
+      "distractores": [
+        "todo_horizontal",
+        "constante"
+      ],
+      "porque": "Depende de $x$ y de $y$: el patron no es ni de columnas ni de bandas.",
+      "d": 3
+    },
+    {
+      "ecuacion": "\\dfrac{dy}{dx} = 5x",
+      "correcto": "pendiente_alta",
+      "distractores": [
+        "todo_horizontal",
+        "constante"
+      ],
+      "porque": "La pendiente se hace muy grande en valor absoluto: el campo se ve casi vertical lejos del eje $y$.",
+      "d": 3
+    }
+  ]
+}
