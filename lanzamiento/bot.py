@@ -98,6 +98,8 @@ async def al_arrancar(app: Application) -> None:
     except Exception as exc:  # noqa: BLE001 - no queremos tumbar el bot por esto
         print(f"No pude fijar el botón de menú: {exc}")
 
+async def manejador_errores(update: object, context: ContextTypes.DEFAULT_TYPE) -> None:
+    print(f"Error de Telegram ignorado: {context.error}")
 
 def main() -> None:
     app = Application.builder().token(BOT_TOKEN).post_init(al_arrancar).build()
@@ -105,6 +107,8 @@ def main() -> None:
     app.add_handler(CommandHandler("menu", cmd_menu))
     app.add_handler(CommandHandler("ayuda", cmd_ayuda))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, cualquier_texto))
+
+    app.add_error_handler(manejador_errores)
 
     print("Bot en línea. Ctrl+C para detener.")
     app.run_polling(allowed_updates=Update.ALL_TYPES)
